@@ -13,6 +13,14 @@ export type ProjectMetric = {
   label: string;
 };
 
+export type ProjectImage = {
+  src?: string;
+  alt: string;
+  caption?: string;
+  kind?: "hero" | "desktop" | "mobile" | "detail";
+  frameClassName?: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -38,6 +46,8 @@ export type Project = {
   challengesSolutions: ProjectChallengeSolution[];
   outcomePoints: string[];
   nextSteps: string;
+  heroImage?: string;
+  gallery?: ProjectImage[];
   liveUrl?: string;
   githubUrl?: string;
   metrics: ProjectMetric[];
@@ -64,6 +74,24 @@ export const projects: Project[] = [
     outcome:
       "A stronger frontend foundation with clearer service communication, better SEO readiness and more robust enquiry handling.",
     featured: true,
+    liveUrl: "https://www.structuralassessments.com.au/",
+    heroImage: "/projects/structural-assessments/structuralassessments-hero.webp",
+    gallery: [
+      {
+        src: "/projects/structural-assessments/structuralassessments-desktop.webp",
+        alt: "Structural Assessments desktop website screenshot",
+        caption: "Desktop page composition",
+        kind: "detail",
+        frameClassName: "h-[24rem] sm:h-[28rem] lg:h-[34rem]",
+      },
+      {
+        src: "/projects/structural-assessments/structuralassessments-mob.webp",
+        alt: "Structural Assessments mobile website screenshot",
+        caption: "Mobile enquiry flow",
+        kind: "mobile",
+        frameClassName: "h-[24rem] sm:h-[28rem] lg:h-[34rem]",
+      },
+    ],
     referenceSummary:
       "An engineering services site built to improve clarity, trust and production readiness through structured frontend implementation.",
     overview:
@@ -157,7 +185,7 @@ export const projects: Project[] = [
   },
   {
     slug: "any-motion",
-    title: "Any Motion",
+    title: "anyMotion",
     client: "Internal tooling",
     summaryFocus: "Campaign production pipeline",
     period: "Recent",
@@ -174,6 +202,24 @@ export const projects: Project[] = [
     outcome:
       "Faster campaign turnaround with more consistent outputs and far less manual banner setup.",
     featured: true,
+    githubUrl: "https://github.com/carlosesierra/any-motion",
+    heroImage: "/projects/any-motion/anymotion-hero.webp",
+    gallery: [
+      {
+        src: "/projects/any-motion/anymotion-desktop.webp",
+        alt: "anyMotion campaign output overview screenshot",
+        caption: "Campaign output overview",
+        kind: "detail",
+        frameClassName: "h-[24rem] sm:h-[28rem] lg:h-[34rem]",
+      },
+      {
+        src: "/projects/any-motion/anymotion-mob.webp",
+        alt: "anyMotion tall-format banner output screenshot",
+        caption: "Tall-format banner detail",
+        kind: "mobile",
+        frameClassName: "h-[24rem] sm:h-[28rem] lg:h-[34rem]",
+      },
+    ],
     referenceSummary:
       "An internal production tool focused on campaign automation, reusable build logic and faster banner delivery.",
     overview:
@@ -281,6 +327,24 @@ export const projects: Project[] = [
     outcome:
       "A cleaner content workflow with reusable page patterns and a stronger frontend base for ongoing updates.",
     featured: true,
+    liveUrl: "https://www.vaaonline.org.au/",
+    heroImage: "/projects/vaa/vaa-hero.webp",
+    gallery: [
+      {
+        src: "/projects/vaa/vaa-desktop.webp",
+        alt: "VAA desktop content website screenshot",
+        caption: "Content layout and page composition",
+        kind: "detail",
+        frameClassName: "h-[24rem] sm:h-[28rem] lg:h-[34rem]",
+      },
+      {
+        src: "/projects/vaa/vaa-mob.webp",
+        alt: "VAA mobile event and editorial screenshot",
+        caption: "Mobile event and editorial preview",
+        kind: "mobile",
+        frameClassName: "h-[24rem] sm:h-[28rem] lg:h-[34rem]",
+      },
+    ],
     referenceSummary:
       "A content-driven website and CMS setup focused on reusable sections, dynamic event pages and easier day-to-day publishing.",
     overview:

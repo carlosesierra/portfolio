@@ -61,6 +61,7 @@ a {
   background: var(--surface);
   box-shadow: 0 24px 60px -38px var(--shadow-color);
   backdrop-filter: blur(18px);
+  border-bottom-left-radius: 0;
 }
 
 .surface-card-strong {
@@ -68,4 +69,9 @@ a {
   background: var(--surface-strong);
   box-shadow: 0 24px 60px -38px var(--shadow-color);
   backdrop-filter: blur(18px);
+  border-bottom-left-radius: 0;
+}
+
+.corner-cut {
+  border-bottom-left-radius: 0 !important;
 }

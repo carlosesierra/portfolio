@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { ProjectShowcaseVisuals } from "@/components/ProjectVisuals";
 import { Tag } from "@/components/ui/Tag";
 import { Container } from "@/components/layout/Container";
 import { projects, type Project } from "@/data/projects";
@@ -71,26 +73,74 @@ function MetaItem({ label, value }: MetaItemProps) {
 }
 
 export function ProjectHero({ project }: { project: Project }) {
+  const projectUrl = project.liveUrl ?? project.githubUrl;
+
   return (
     <section className="pb-10 pt-16 sm:pb-12 sm:pt-20">
       <Container>
         <div className="surface-card-strong rounded-[2.5rem] p-8 sm:p-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
-            Case Study
-          </p>
-          <h1 className="mt-4 max-w-4xl font-serif text-4xl leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            {project.title}
-          </h1>
-          <p className="mt-5 max-w-3xl text-base leading-8 text-muted sm:text-lg">
-            {project.summary}
-          </p>
-          <Tags items={project.focus} className="mt-6" />
+          <div
+            className={cn(
+              project.heroImage &&
+                "grid gap-8 lg:grid-cols-[minmax(0,0.67fr)_minmax(18rem,0.33fr)] lg:items-start",
+            )}
+          >
+            <div className="min-w-0">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
+                Case Study
+              </p>
+              <h1 className="mt-4 max-w-4xl font-serif text-4xl leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+                {project.title}
+              </h1>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button href="/#projects" variant="secondary">
-              Back to Projects
-            </Button>
-            {project.liveUrl ? <Button href={project.liveUrl}>Visit Live Site</Button> : null}
+              {project.heroImage ? (
+                <div className="mt-6 lg:hidden">
+                  <div className="surface-card overflow-hidden rounded-[1.9rem] p-2.5">
+                    <div className="corner-cut relative aspect-square overflow-hidden rounded-[1.5rem]">
+                      <Image
+                        src={project.heroImage}
+                        alt={`${project.title} hero preview`}
+                        fill
+                        priority
+                        sizes="(max-width: 639px) calc(100vw - 8.5rem), (max-width: 1023px) calc(100vw - 9.5rem)"
+                        className="object-cover object-top"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+
+              <p className="mt-5 max-w-3xl text-base leading-8 text-muted sm:text-lg">
+                {project.summary}
+              </p>
+              <Tags items={project.focus} className="mt-6" />
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button href="/#projects" variant="secondary">
+                  Back to Projects
+                </Button>
+                {projectUrl ? (
+                  <Button href={projectUrl}>Visit Project</Button>
+                ) : null}
+              </div>
+            </div>
+
+            {project.heroImage ? (
+              <div className="hidden lg:block lg:justify-self-end lg:w-full lg:max-w-[24rem]">
+                <div className="surface-card overflow-hidden rounded-[1.9rem] p-2.5">
+                  <div className="corner-cut relative aspect-[4/3] overflow-hidden rounded-[1.5rem]">
+                    <Image
+                      src={project.heroImage}
+                      alt={`${project.title} hero preview`}
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 30vw"
+                      className="object-cover object-top"
+                    />
+                  </div>
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
       </Container>
@@ -126,44 +176,47 @@ export function ProjectVisualShowcase({ project }: { project: Project }) {
           }
         />
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="surface-card rounded-[2rem] p-6 sm:p-8">
-            <div className="flex gap-2">
-              <span className="h-3 w-3 rounded-full bg-accent/35" />
-              <span className="h-3 w-3 rounded-full bg-muted/35" />
-              <span className="h-3 w-3 rounded-full bg-border" />
+        <div className="mt-10 grid gap-5 xl:grid-cols-[1.18fr_0.82fr] xl:items-start">
+          <ProjectShowcaseVisuals project={project} />
+
+          <div className="space-y-5">
+            <div className="surface-card rounded-[2rem] p-6 sm:p-8">
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-1">
+                {project.metrics.map((metric) => (
+                  <article
+                    key={metric.label}
+                    className="corner-cut rounded-[1.5rem] border border-border bg-white/78 p-5"
+                  >
+                    <p className="text-lg font-semibold leading-tight tracking-tight text-foreground">
+                      {metric.value}
+                    </p>
+                    <p className="mt-3 max-w-[34ch] text-sm leading-7 text-muted">
+                      {metric.label}
+                    </p>
+                  </article>
+                ))}
+              </div>
             </div>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {project.metrics.map((metric) => (
-                <article key={metric.label} className="rounded-[1.5rem] bg-white/85 p-5">
-                  <p className="font-serif text-2xl leading-tight tracking-tight text-foreground">
-                    {metric.value}
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-muted">{metric.label}</p>
-                </article>
-              ))}
-            </div>
-
-            <div className="mt-6 rounded-[1.75rem] bg-accent-soft/75 p-6">
+            <div className="surface-card rounded-[2rem] p-6 sm:p-8">
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted">
-                Outcome direction
+                Focus Areas
               </p>
-              <p className="mt-3 text-sm leading-7 text-foreground">{project.outcome}</p>
-            </div>
-          </div>
+              <Tags items={project.showcaseFocus ?? project.focus} className="mt-5" />
 
-          <div className="surface-card rounded-[2rem] p-6 sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted">
-              Focus Areas
-            </p>
-            <Tags items={project.showcaseFocus ?? project.focus} className="mt-5" />
+              <div className="corner-cut mt-8 rounded-[1.75rem] border border-border bg-white/75 p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted">
+                  Summary
+                </p>
+                <p className="mt-3 text-sm leading-7 text-muted">{project.tagline}</p>
+              </div>
 
-            <div className="mt-8 rounded-[1.75rem] border border-border bg-white/75 p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted">
-                Summary
-              </p>
-              <p className="mt-3 text-sm leading-7 text-muted">{project.tagline}</p>
+              <div className="corner-cut mt-5 rounded-[1.75rem] bg-accent-soft/75 p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted">
+                  Outcome direction
+                </p>
+                <p className="mt-3 text-sm leading-7 text-foreground">{project.outcome}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -383,7 +436,7 @@ export function ProjectPager({ currentSlug }: { currentSlug: string }) {
   const nextProject = projects[(currentIndex + 1) % projects.length];
 
   return (
-    <section className="py-16 sm:py-20">
+    <section className="pb-12 pt-8 sm:pb-14 sm:pt-10">
       <Container>
         <div className="grid gap-5 md:grid-cols-2">
           <Link

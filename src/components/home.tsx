@@ -67,7 +67,7 @@ function Tags({ items, className }: TagsProps) {
 
 function MetricCard({ value, label }: MetricCardProps) {
   return (
-    <article className="surface-card rounded-[2rem] p-6">
+    <article className="surface-card rounded-4xl p-6">
       <p className="font-serif text-3xl leading-tight tracking-tight text-foreground sm:text-4xl">
         {value}
       </p>
@@ -78,7 +78,7 @@ function MetricCard({ value, label }: MetricCardProps) {
 
 function StackGroup({ title, items }: StackGroupProps) {
   return (
-    <article className="surface-card rounded-[2rem] p-6">
+    <article className="surface-card rounded-4xl p-6">
       <h3 className="text-lg font-semibold tracking-tight text-foreground">
         {title}
       </h3>
@@ -113,7 +113,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="surface-card rounded-[2rem] p-7 sm:p-8">
+          <div className="surface-card rounded-4xl p-7 sm:p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
               What I’m strongest at
             </p>
@@ -139,7 +139,7 @@ export function ValuePropsSection() {
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {siteConfig.valueProps.map((item) => (
-            <article key={item.title} className="surface-card rounded-[2rem] p-6">
+            <article key={item.title} className="surface-card rounded-4xl p-6">
               <h3 className="text-xl font-semibold tracking-tight text-foreground">
                 {item.title}
               </h3>
@@ -185,7 +185,7 @@ export function StrengthsSection() {
 
           <div className="grid gap-5 sm:grid-cols-2">
             {siteConfig.strengths.map((item) => (
-              <article key={item.title} className="surface-card rounded-[2rem] p-6">
+              <article key={item.title} className="surface-card rounded-4xl p-6">
                 <h3 className="text-lg font-semibold tracking-tight text-foreground">
                   {item.title}
                 </h3>
@@ -211,7 +211,7 @@ export function ExperienceSnapshotSection() {
 
         <div className="mt-10 grid gap-5 lg:grid-cols-3">
           {siteConfig.experienceSnapshot.map((item) => (
-            <article key={item.title} className="surface-card rounded-[2rem] p-6">
+            <article key={item.title} className="surface-card rounded-4xl p-6">
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted">
                 {item.eyebrow}
               </p>
@@ -277,7 +277,7 @@ export function AboutPreviewSection() {
             title="A short introduction to how I approach frontend engineering."
           />
 
-          <div className="surface-card rounded-[2rem] p-7 sm:p-8">
+          <div className="surface-card rounded-4xl p-7 sm:p-8">
             <div className="space-y-5 text-base leading-8 text-muted">
               {siteConfig.about.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>

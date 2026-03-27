@@ -4,9 +4,9 @@ import { Container } from "./Container";
 
 export function SiteFooter() {
   return (
-    <footer className="pb-10 pt-16">
+    <footer className="pb-10 pt-10 sm:pt-12">
       <Container>
-        <div className="surface-card rounded-[2rem] px-6 py-8 sm:px-8">
+        <div className="surface-card rounded-[2rem] rounded-bl-none px-6 py-8 sm:px-8">
           <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">

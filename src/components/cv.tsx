@@ -75,7 +75,7 @@ function ExperienceItem({ item }: { item: CvExperienceItem }) {
 
       <div className="mt-6 grid gap-4 md:grid-cols-3">
         {item.highlights.map((highlight) => (
-          <div key={highlight} className="rounded-[1.5rem] bg-white/75 p-4">
+          <div key={highlight} className="corner-cut rounded-[1.5rem] bg-white/75 p-4">
             <p className="text-sm leading-7 text-foreground">{highlight}</p>
           </div>
         ))}
