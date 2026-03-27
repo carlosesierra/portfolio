@@ -22,13 +22,23 @@ export function SiteFooter() {
 
             <div className="flex flex-wrap gap-4 text-sm text-muted">
               {siteConfig.navigation.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="transition-colors hover:text-foreground"
-                >
-                  {item.label}
-                </Link>
+                item.href.startsWith("/#") ? (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="transition-colors hover:text-foreground"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="transition-colors hover:text-foreground"
+                  >
+                    {item.label}
+                  </Link>
+                )
               ))}
             </div>
           </div>

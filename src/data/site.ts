@@ -18,7 +18,7 @@ export const siteConfig = {
         "I focus on strong hierarchy, readable layouts and component patterns that make interfaces easier to scan, use and maintain.",
     },
     {
-      title: "Friendly presentation",
+      title: "Clear communication of technical work",
       body:
         "I can present frontend work in a way that is both visually polished and clearly tied to implementation value.",
     },
@@ -45,7 +45,7 @@ export const siteConfig = {
         "I prefer reusable components, consistent patterns and implementation choices that support long-term maintainability.",
     },
     {
-      title: "Execution quality",
+      title: "Reliable delivery quality",
       body:
         "The quality of the finished work matters to me just as much as shipping it. I aim for interfaces that feel considered and reliable.",
     },
@@ -72,12 +72,12 @@ export const siteConfig = {
   ],
   proofPoints: [
     {
-      value: "Accessibility First",
+      value: "Accessibility-minded implementation",
       label:
         "Semantic structure and accessible UI patterns are built into how I approach frontend implementation.",
     },
     {
-      value: "Reusable UI",
+      value: "Reusable component thinking",
       label:
         "I prefer repeatable component thinking over one-off page styling whenever possible.",
     },
@@ -119,7 +119,7 @@ export const siteConfig = {
   ],
   contactCta: {
     title:
-      "Open to frontend opportunities where thoughtful UI and structured delivery matter.",
+      "Open to frontend roles where thoughtful UI and structured delivery matter.",
     body:
       "This portfolio highlights the kind of work I want to keep building: accessible interfaces, maintainable frontend systems and polished digital experiences delivered with care.",
     primaryLabel: "View CV",

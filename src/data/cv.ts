@@ -77,17 +77,17 @@ export const cvData: CvData = {
   ],
   highlights: [
     {
-      title: "Readable frontend systems",
+      title: "Structured frontend systems",
       body:
         "Built work that favours predictable structure and reusable patterns over fragile one-off execution.",
     },
     {
-      title: "Design sensitivity",
+      title: "Design-aware implementation",
       body:
         "Strong experience in translating layouts, hierarchy and interface direction into polished frontend delivery.",
     },
     {
-      title: "Recruiter-friendly presentation",
+      title: "Clear presentation of technical work",
       body:
         "Able to describe and present implementation work clearly for both technical teams and hiring stakeholders.",
     },

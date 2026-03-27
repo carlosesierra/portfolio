@@ -114,7 +114,10 @@ export function HeroSection() {
           </div>
 
           <div className="surface-card rounded-[2rem] p-7 sm:p-8">
-            <p className="text-lg leading-7 text-foreground">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
+              What I’m strongest at
+            </p>
+            <p className="mt-4 text-lg leading-7 text-foreground">
               {siteConfig.supportingLine}
             </p>
           </div>
@@ -130,7 +133,7 @@ export function ValuePropsSection() {
       <Container>
         <SectionHeading
           eyebrow="What I bring"
-          title="Frontend work that helps recruiters and teams understand the value quickly."
+          title="Frontend work focused on clarity, maintainability and production-ready delivery."
           copy="My background combines UI implementation, structured frontend delivery and the kind of production discipline that comes from working across both websites and campaign environments."
         />
 
@@ -155,7 +158,7 @@ export function FeaturedProjectsSection() {
       <Container>
         <SectionHeading
           eyebrow="Featured work"
-          title="Selected projects that show structure, polish and maintainable delivery."
+          title="Selected projects showing frontend structure, delivery quality and practical outcomes."
           copy="The case studies below focus on the decisions, implementation details and delivery outcomes behind the work, not just the finished screens."
         />
 
@@ -176,7 +179,7 @@ export function StrengthsSection() {
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <SectionHeading
             eyebrow="Working style"
-            title="The strengths I bring into frontend delivery"
+            title="The strengths I bring into frontend delivery."
             copy="The strongest parts of my work sit between interface quality, structured implementation and practical delivery under real project constraints."
           />
 
@@ -202,7 +205,7 @@ export function ExperienceSnapshotSection() {
       <Container>
         <SectionHeading
           eyebrow="Experience snapshot"
-          title="Experience across frontend delivery, campaigns and reusable UI systems."
+          title="A quick view of the experience behind the work."
           copy="My background includes frontend engineering, campaign production, reusable UI delivery and practical implementation across different digital formats."
         />
 
@@ -230,9 +233,8 @@ export function ProofMetricsSection() {
       <Container>
         <SectionHeading
           eyebrow="Proof points"
-          title="What I’m strongest at in frontend work"
+          title="What I’m strongest at in frontend work."
           copy="These are the areas I’ve built the most confidence in through production-facing frontend delivery."
-          align="center"
         />
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
@@ -251,7 +253,7 @@ export function TechStackSection() {
       <Container>
         <SectionHeading
           eyebrow="Tooling"
-          title="Tools and technologies I use across frontend build and delivery."
+          title="Tools and environments I use to build and ship frontend work."
           copy="These are the environments I work in most often across implementation, UI systems and production delivery."
         />
 
@@ -272,7 +274,7 @@ export function AboutPreviewSection() {
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <SectionHeading
             eyebrow="About"
-            title="Frontend engineer shaped by digital production, structured systems and practical delivery."
+            title="A short introduction to how I approach frontend engineering."
           />
 
           <div className="surface-card rounded-[2rem] p-7 sm:p-8">

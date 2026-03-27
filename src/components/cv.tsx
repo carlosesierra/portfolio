@@ -142,7 +142,7 @@ export function CoreSkillsSection() {
       <Container>
         <SectionHeading
           eyebrow="Core skills"
-          title="Core skills grouped by how I use them in practice"
+          title="Core skills grouped by how I use them in practice."
         />
 
         <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -166,7 +166,7 @@ export function HighlightsSection() {
       <Container>
         <SectionHeading
           eyebrow="Highlights"
-          title="A few strengths that show up consistently in my work"
+          title="A few strengths that show up consistently in my work."
           copy="These themes reflect how I tend to approach frontend implementation across both product-style websites and campaign-driven environments."
         />
 
@@ -247,7 +247,7 @@ export function EducationCertsSection() {
       <Container>
         <SectionHeading
           eyebrow="Education and specialisation"
-          title="Ongoing learning and technical development"
+          title="Ongoing learning and technical development."
           copy="Alongside project work, I continue refining my frontend practice through structured learning, design-to-code execution and deeper work with modern UI systems."
         />
 
@@ -272,7 +272,7 @@ export function ToolsSection() {
       <Container>
         <SectionHeading
           eyebrow="Tooling"
-          title="Tools and technologies"
+          title="Tools and technologies."
           copy="The tools below reflect the environments I’ve worked in most often across frontend build, interface implementation and digital delivery."
         />
 
@@ -300,7 +300,7 @@ export function CvCtaSection() {
             Continue exploring
           </p>
           <h2 className="mx-auto mt-4 max-w-3xl font-serif text-4xl leading-tight tracking-tight text-foreground sm:text-5xl">
-            Explore the project pages for a closer look at implementation decisions, delivery thinking and frontend execution.
+            Explore the case studies for a closer look at implementation decisions, delivery thinking and frontend execution.
           </h2>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button href="/#projects">Open Case Studies</Button>

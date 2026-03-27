@@ -209,7 +209,7 @@ export function ProjectRoleSection({ project }: { project: Project }) {
         <SectionHeading
           eyebrow="Role"
           title="Scope of contribution"
-          copy="These responsibilities are shown to make it clear what I directly shaped in the case study and what sat within the frontend delivery scope."
+          copy="The points below reflect the parts of the work I directly shaped across frontend implementation, structure and delivery."
         />
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">

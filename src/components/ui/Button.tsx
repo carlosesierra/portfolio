@@ -25,13 +25,14 @@ export function Button({
 }: ButtonProps) {
   const isExternal = href.startsWith("http://") || href.startsWith("https://");
   const isMailto = href.startsWith("mailto:");
+  const isHashLink = href.startsWith("#") || href.startsWith("/#");
   const classes = cn(
     "inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition-colors",
     variantClasses[variant],
     className,
   );
 
-  if (isExternal || isMailto) {
+  if (isExternal || isMailto || isHashLink) {
     return (
       <a
         href={href}

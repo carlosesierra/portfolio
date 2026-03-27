@@ -18,13 +18,23 @@ export function SiteHeader() {
 
         <nav className="hidden items-center gap-6 text-sm text-muted md:flex">
           {siteConfig.navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="transition-colors hover:text-foreground"
-            >
-              {item.label}
-            </Link>
+            item.href.startsWith("/#") ? (
+              <a
+                key={item.href}
+                href={item.href}
+                className="transition-colors hover:text-foreground"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="transition-colors hover:text-foreground"
+              >
+                {item.label}
+              </Link>
+            )
           ))}
         </nav>
 
