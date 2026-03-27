@@ -36,10 +36,9 @@ export type CvData = {
 // Replace these seeded entries with your exact employment history before sharing.
 export const cvData: CvData = {
   availability:
-    "Front-End Engineer with experience across React, TypeScript, modern responsive UI implementation, digital production and delivery-focused frontend systems.",
+    "A concise overview of my frontend experience, core skills and selected project references.",
   summary: [
-    "I’m a Front-End Engineer with a background across websites, campaign delivery, eDM systems and branded digital production. My work combines clean frontend implementation, maintainable component structure, responsive design thinking and a practical understanding of how digital work gets delivered in real production environments.",
-    "I’m particularly interested in opportunities where strong UI execution meets modern engineering workflows, accessible interfaces and reusable systems that can scale over time.",
+    "I’m a Front-End Engineer with experience across websites, campaign delivery, eDM systems and modern responsive UI implementation. My work combines clean frontend execution, reusable structure, accessibility awareness and a practical understanding of how digital projects are delivered in real production environments.",
   ],
   coreSkills: [
     {

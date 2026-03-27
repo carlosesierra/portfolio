@@ -118,12 +118,13 @@ export const siteConfig = {
     "The common thread in my work is frontend execution that feels polished, maintainable and grounded in practical delivery. I’m now focused on roles where thoughtful UI implementation, structured engineering and product-facing collaboration come together.",
   ],
   contactCta: {
-    title: "Ready to turn this into the version you actually send to recruiters.",
+    title:
+      "Open to frontend opportunities where thoughtful UI and structured delivery matter.",
     body:
-      "The structure is here. The next step is refining the featured case studies, tightening the visual system and connecting the work directly to the roles you want to pursue.",
+      "This portfolio highlights the kind of work I want to keep building: accessible interfaces, maintainable frontend systems and polished digital experiences delivered with care.",
     primaryLabel: "View CV",
     primaryHref: "/cv",
-    secondaryLabel: "Browse Case Studies",
+    secondaryLabel: "Browse Projects",
     secondaryHref: "/#projects",
   },
   footerBlurb:

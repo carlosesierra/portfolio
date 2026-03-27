@@ -121,7 +121,7 @@ export function ProfessionalSummarySection() {
       <Container>
         <SectionHeading
           eyebrow="Professional summary"
-          title="A concise overview of the role profile."
+          title="Frontend engineer focused on clear UI, structured implementation and reliable delivery."
         />
 
         <div className="mt-8 surface-card rounded-[2rem] p-7 sm:p-8">
@@ -142,7 +142,7 @@ export function CoreSkillsSection() {
       <Container>
         <SectionHeading
           eyebrow="Core skills"
-          title="Breadth organised into clear buckets."
+          title="Core skills grouped by how I use them in practice"
         />
 
         <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -166,7 +166,8 @@ export function HighlightsSection() {
       <Container>
         <SectionHeading
           eyebrow="Highlights"
-          title="Key themes worth scanning before the detailed experience history."
+          title="A few strengths that show up consistently in my work"
+          copy="These themes reflect how I tend to approach frontend implementation across both product-style websites and campaign-driven environments."
         />
 
         <div className="mt-8 grid gap-5 md:grid-cols-3">
@@ -190,8 +191,8 @@ export function ExperienceSection() {
       <Container>
         <SectionHeading
           eyebrow="Experience"
-          title="Role entries organised so you can swap in your exact role history."
-          copy="The structure below is designed to show role context, contribution and stack clearly. Replace the generic copy with your final role history and achievements."
+          title="Selected experience"
+          copy="My background spans frontend implementation, digital production and delivery-focused work across websites, campaigns and reusable UI systems."
         />
 
         <div className="mt-8 space-y-5">
@@ -215,7 +216,8 @@ export function KeyProjectsSection() {
       <Container>
         <SectionHeading
           eyebrow="References"
-          title="Project references that connect the CV to the case studies."
+          title="Selected project references"
+          copy="A few projects that reflect my frontend implementation style, delivery thinking and approach to maintainable UI work."
         />
 
         <div className="mt-8 grid gap-5 lg:grid-cols-3">
@@ -245,7 +247,8 @@ export function EducationCertsSection() {
       <Container>
         <SectionHeading
           eyebrow="Education and specialisation"
-          title="A placeholder-ready section for formal study and ongoing learning."
+          title="Ongoing learning and technical development"
+          copy="Alongside project work, I continue refining my frontend practice through structured learning, design-to-code execution and deeper work with modern UI systems."
         />
 
         <div className="mt-8 grid gap-5 md:grid-cols-2">
@@ -269,7 +272,8 @@ export function ToolsSection() {
       <Container>
         <SectionHeading
           eyebrow="Tooling"
-          title="Delivery tooling grouped by how it tends to be used."
+          title="Tools and technologies"
+          copy="The tools below reflect the environments I’ve worked in most often across frontend build, interface implementation and digital delivery."
         />
 
         <div className="mt-8 grid gap-5 md:grid-cols-3">
@@ -296,7 +300,7 @@ export function CvCtaSection() {
             Continue exploring
           </p>
           <h2 className="mx-auto mt-4 max-w-3xl font-serif text-4xl leading-tight tracking-tight text-foreground sm:text-5xl">
-            Use the project pages to show execution depth, not just role titles.
+            Explore the project pages for a closer look at implementation decisions, delivery thinking and frontend execution.
           </h2>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button href="/#projects">Open Case Studies</Button>
