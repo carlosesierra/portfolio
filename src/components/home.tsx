@@ -115,7 +115,7 @@ export function HeroSection() {
 
           <div className="surface-card rounded-4xl p-7 sm:p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
-              What I’m strongest at
+              What I'm strongest at
             </p>
             <p className="mt-4 text-lg leading-7 text-foreground">
               {siteConfig.supportingLine}
@@ -158,7 +158,7 @@ export function FeaturedProjectsSection() {
       <Container>
         <SectionHeading
           eyebrow="Featured work"
-          title="Selected projects showing frontend structure, delivery quality and practical outcomes."
+          title="Frontend structure, delivery quality and practical outcomes."
           copy="The case studies below focus on the decisions, implementation details and delivery outcomes behind the work, not just the finished screens."
         />
 
@@ -179,7 +179,7 @@ export function StrengthsSection() {
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <SectionHeading
             eyebrow="Working style"
-            title="The strengths I bring into frontend delivery."
+            title="Sharing strengths in the frontend delivery."
             copy="The strongest parts of my work sit between interface quality, structured implementation and practical delivery under real project constraints."
           />
 
@@ -205,7 +205,7 @@ export function ExperienceSnapshotSection() {
       <Container>
         <SectionHeading
           eyebrow="Experience snapshot"
-          title="A quick view of the experience behind the work."
+          title="The experience behind the work."
           copy="My background includes frontend engineering, campaign production, reusable UI delivery and practical implementation across different digital formats."
         />
 
@@ -233,8 +233,8 @@ export function ProofMetricsSection() {
       <Container>
         <SectionHeading
           eyebrow="Proof points"
-          title="What I’m strongest at in frontend work."
-          copy="These are the areas I’ve built the most confidence in through production-facing frontend delivery."
+          title="My forte in frontend work."
+          copy="These are the areas I've built the most confidence in through production-facing frontend delivery."
         />
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
@@ -253,7 +253,7 @@ export function TechStackSection() {
       <Container>
         <SectionHeading
           eyebrow="Tooling"
-          title="Tools and environments I use to build and ship frontend work."
+          title="Tools and environments I use."
           copy="These are the environments I work in most often across implementation, UI systems and production delivery."
         />
 

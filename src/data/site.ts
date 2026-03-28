@@ -5,7 +5,7 @@ export const siteConfig = {
   intro:
     "I build fast, accessible and production-ready interfaces with React, TypeScript and modern frontend workflows. My experience spans product websites, marketing platforms, reusable UI patterns, eDM systems and high-volume campaign delivery.",
   supportingLine:
-    "I’m particularly strong at turning design into polished, maintainable frontend systems that work well across devices and are practical to ship.",
+    "I'm particularly strong at turning design into polished, maintainable frontend systems that work well across devices and are practical to ship.",
   navigation: [
     { label: "Projects", href: "/#projects" },
     { label: "About", href: "/#about" },
@@ -37,7 +37,7 @@ export const siteConfig = {
     {
       title: "Structured delivery",
       body:
-        "I’m used to working with deadlines, revisions, content constraints and production requirements without losing quality.",
+        "I'm used to working with deadlines, revisions, content constraints and production requirements without losing quality.",
     },
     {
       title: "Frontend system thinking",
@@ -114,8 +114,8 @@ export const siteConfig = {
     },
   ],
   about: [
-    "I’m a Melbourne-based Front-End Engineer with a background across websites, digital production and marketing-tech delivery. Over time, I’ve developed a strong interest in the systems behind good interface work — how components are structured, how content is presented clearly and how delivery stays reliable under real production constraints.",
-    "The common thread in my work is frontend execution that feels polished, maintainable and grounded in practical delivery. I’m now focused on roles where thoughtful UI implementation, structured engineering and product-facing collaboration come together.",
+    "I'm a Melbourne-based Front-End Engineer with a background across websites, digital production and marketing-tech delivery. Over time, I've developed a strong interest in the systems behind good interface work — how components are structured, how content is presented clearly and how delivery stays reliable under real production constraints.",
+    "The common thread in my work is frontend execution that feels polished, maintainable and grounded in practical delivery. I'm now focused on roles where thoughtful UI implementation, structured engineering and product-facing collaboration come together.",
   ],
   contactCta: {
     title:

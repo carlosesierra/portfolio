@@ -36,9 +36,9 @@ export type CvData = {
 // Replace these seeded entries with your exact employment history before sharing.
 export const cvData: CvData = {
   availability:
-    "A concise overview of my frontend experience, core skills and selected project references.",
+    "An overview of my frontend experience, core skills and selected project references.",
   summary: [
-    "I’m a Front-End Engineer with experience across websites, campaign delivery, eDM systems and modern responsive UI implementation. My work combines clean frontend execution, reusable structure, accessibility awareness and a practical understanding of how digital projects are delivered in real production environments.",
+    "I'm a Front-End Engineer with experience across websites, campaign delivery, eDM systems and modern responsive UI implementation. My work combines clean frontend execution, reusable structure, accessibility awareness and a practical understanding of how digital projects are delivered in real production environments.",
   ],
   coreSkills: [
     {
@@ -70,6 +70,7 @@ export const cvData: CvData = {
         "Vercel",
         "Git workflow",
         "CMS integration",
+        "Sanity (Headless CMS)",
         "Cross-browser QA",
         "Performance review",
       ],
@@ -95,42 +96,42 @@ export const cvData: CvData = {
   experience: [
     {
       eyebrow: "Recent role",
-      role: "Senior Front-End Engineer",
-      period: "Recent experience",
+      role: "Frontend Engineer · Freelance",
+      period: "2015 - Present",
       summary:
-        "Delivered production-facing interfaces and digital work across websites, reusable components, eDM systems and campaign assets.",
+        "Delivering websites, landing pages and eDM campaigns for businesses that need practical, modern web presence and reliable frontend implementation.",
       highlights: [
-        "Streamlined delivery across digital production through structured frontend patterns and repeatable workflow thinking.",
-        "Improved execution through clearer system structure, reusable UI and component-driven delivery.",
-        "Worked across implementation detail, QA and visual polish in fast-moving production environments.",
+        "Designed, built and launched modern business websites with a focus on clarity, responsiveness and maintainable structure",
+        "Delivered one-page sites, landing pages, eDM campaigns and animated banners across a range of business needs",
+        "Handled implementation end to end, from frontend build and layout refinement through to deployment-ready deliver",
       ],
-      stack: ["React", "TypeScript", "UI Systems", "QA Process"],
+      stack: ["React", "Tailwind", "TypeScript", "Frontend Development", "QA Process", "eDM" ,"Web Design"],
     },
     {
       eyebrow: "Marketing and delivery team",
-      role: "Front-End Engineer",
-      period: "Previous experience",
+      role: "Senior Front-End Developer · MADE THIS",
+      period: "Dec 2023 - Jan 2025",
       summary:
-        "Built responsive interfaces, campaign assets and structured frontend deliverables while collaborating with design and production teams.",
+        "Delivered frontend development across landing pages, responsive eDMs and HTML5 animated banners, translating creative direction into polished, production-ready digital work.",
       highlights: [
-        "Balanced layout quality with responsible component decisions in deadline-driven delivery work.",
-        "Collaborated across stakeholders to translate design direction into practical implementation.",
-        "Refined page hierarchy and responsive behaviour across multiple digital outputs.",
+        "Built responsive landing pages, eDMs and animated banner work across fast-paced campaign delivery environments.",
+        "Worked across React, Bootstrap, GSAP, JavaScript, Sass and production tooling including Node and npm.",
+        "Balanced visual quality, implementation accuracy and turnaround speed across campaign-led frontend delivery.",
       ],
-      stack: ["React", "Tailwind", "CMS Workflows", "Performance Review"],
+      stack: ["JavaScript", "React", "Bootstrap", "GSAP", "Node", "CMS Workflows", "Performance Review"],
     },
     {
-      eyebrow: "Earlier foundation",
-      role: "Frontend Developer",
+      eyebrow: "Jan 2018 - Jan 2025",
+      role: "Senior Front-End Developer · eg+ worldwide",
       period: "Foundational experience",
       summary:
-        "Built a foundation in frontend implementation, browser behaviour, campaign assets and multi-format digital production.",
+        "Delivered frontend and digital production work across websites, responsive eDMs, HTML5 banners and landing pages, with a strong emphasis on scalable delivery and implementation quality.",
       highlights: [
-        "Strengthened layout, styling and UI implementation fundamentals across websites and production deliverables.",
-        "Learned to work with shared codebases and evolving design direction.",
-        "Built confidence across delivery QA, visual consistency and browser edge cases.",
+        "Built responsive digital experiences across web, email and campaign formats in high-volume production environments.",
+        "Worked across React, Node, GSAP, Gulp, JavaScript and Sass to support efficient and reliable campaign delivery.",
+        "Contributed to workflow improvements and repeatable production patterns that supported faster execution and consistent output quality.",
       ],
-      stack: ["HTML", "CSS", "JavaScript", "UI Implementation"],
+      stack: ["React", "Node", "GSAP", "Gulp", "Marketing Cloud", "Campaign Production"],
     },
   ],
   keyProjectSlugs: [

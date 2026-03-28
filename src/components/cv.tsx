@@ -121,7 +121,7 @@ export function ProfessionalSummarySection() {
       <Container>
         <SectionHeading
           eyebrow="Professional summary"
-          title="Frontend engineer focused on clear UI, structured implementation and reliable delivery."
+          title="Frontend engineering focused on clear UI, structured implementation and reliable delivery."
         />
 
         <div className="mt-8 surface-card rounded-[2rem] p-7 sm:p-8">
@@ -142,7 +142,7 @@ export function CoreSkillsSection() {
       <Container>
         <SectionHeading
           eyebrow="Core skills"
-          title="Core skills grouped by how I use them in practice."
+          title="Core skills: How I use them in practice."
         />
 
         <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -166,7 +166,7 @@ export function HighlightsSection() {
       <Container>
         <SectionHeading
           eyebrow="Highlights"
-          title="A few strengths that show up consistently in my work."
+          title="Strengths that show up consistently in my work."
           copy="These themes reflect how I tend to approach frontend implementation across both product-style websites and campaign-driven environments."
         />
 
@@ -191,8 +191,8 @@ export function ExperienceSection() {
       <Container>
         <SectionHeading
           eyebrow="Experience"
-          title="Selected experience"
-          copy="My background spans frontend implementation, digital production and delivery-focused work across websites, campaigns and reusable UI systems."
+          title="Selected experience."
+          copy="Experience across frontend engineering, digital production and campaign delivery spanning websites, eDM systems, HTML5 banners and modern responsive UI implementation."
         />
 
         <div className="mt-8 space-y-5">
