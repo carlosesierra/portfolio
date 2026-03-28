@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
 
-## Getting Started
+Personal portfolio site for Carlos Sierra, built with Next.js App Router, React 19, TypeScript, and Tailwind CSS 4.
 
-First, run the development server:
+## Routes
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- `/`: portfolio homepage with featured work, strengths, experience snapshot, and CTA sections
+- `/cv`: recruiter-facing CV page
+- `/projects/[slug]`: project case-study pages generated from structured data
+
+## Tech Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- ESLint
+
+## Project Structure
+
+```text
+src/
+  app/
+    page.tsx                 Home route
+    cv/page.tsx              CV route
+    projects/[slug]/page.tsx Project detail route
+    layout.tsx               Shared shell and metadata
+    globals.css              Global styles
+  components/
+    button.tsx               Shared button primitive
+    container.tsx            Shared page-width wrapper
+    parallax-media.tsx       Scroll-based media treatment
+    project-card.tsx         Featured project cards
+    project-visuals.tsx      Shared project media rendering
+    site-footer.tsx          Global footer
+    site-header.tsx          Global header
+    tag.tsx                  Shared tag primitive
+    home.tsx                 Homepage sections
+    cv.tsx                   CV sections
+    project.tsx              Project detail sections
+  data/
+    site.ts                  Site copy and navigation
+    cv.ts                    CV content
+    projects.ts              Project metadata and media references
+  lib/
+    utils.ts                 Small shared helpers
+
+public/
+  projects/                  Optimized runtime project images
+
+_assets/
+  Source PNG captures kept alongside the repo
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Install dependencies and start the dev server:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm install
+pnpm dev
+```
 
-## Learn More
+Useful scripts:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm lint
+pnpm typecheck
+pnpm build
+pnpm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Content Editing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Most site content is data-driven:
 
-## Deploy on Vercel
+- Update `src/data/site.ts` for global copy, navigation, about text, and CTA content
+- Update `src/data/cv.ts` for CV content
+- Update `src/data/projects.ts` to add or edit case studies
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To add a project:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Add the project entry in `src/data/projects.ts`
+2. Add optimized images under `public/projects/<slug>/`
+3. Mark the project `featured: true` if it should appear on the homepage
+
+## Asset Notes
+
+- `public/projects/` contains the optimized images actually served by the site
+- `_assets/` contains larger source PNG files and is not referenced by the runtime app
+
+## Maintenance Notes
+
+- `.next/`, `node_modules/`, `.DS_Store`, and `*.tsbuildinfo` are local/generated artifacts and should stay out of version control
+- This repo uses the App Router and project pages are statically generated via `generateStaticParams`

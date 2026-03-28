@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/data/site";
-import { Button } from "@/components/ui/Button";
-import { Container } from "./Container";
+import { Button } from "@/components/button";
+import { Container } from "@/components/container";
 
 export function SiteHeader() {
   return (

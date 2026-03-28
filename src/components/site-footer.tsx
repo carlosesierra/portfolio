@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/data/site";
-import { Container } from "./Container";
+import { Container } from "@/components/container";
 
 export function SiteFooter() {
   return (

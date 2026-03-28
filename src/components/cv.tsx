@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
-import { Tag } from "@/components/ui/Tag";
-import { Container } from "@/components/layout/Container";
+import { Button } from "@/components/button";
+import { Tag } from "@/components/tag";
+import { Container } from "@/components/container";
 import { cvData, type CvExperienceItem } from "@/data/cv";
 import { getProjectBySlug } from "@/data/projects";
 import { siteConfig } from "@/data/site";

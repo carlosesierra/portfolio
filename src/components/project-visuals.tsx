@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ParallaxMedia } from "@/components/parallax-media";
 import type { Project, ProjectImage } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
@@ -263,14 +264,16 @@ function ProjectMediaFigure({
     className,
   );
   const mediaClass = cn(
-    "corner-cut relative overflow-hidden rounded-[1.5rem]",
+    "corner-cut rounded-[1.5rem]",
     item.frameClassName ?? getAspectClass(itemKind),
   );
+  const parallaxStrength =
+    itemKind === "mobile" ? 34 : compact ? 28 : itemKind === "hero" ? 40 : 36;
 
   return (
     <figure className={wrapperClass}>
       <div className="surface-card overflow-hidden rounded-[1.85rem] p-2.5">
-        <div className={mediaClass}>
+        <ParallaxMedia className={mediaClass} strength={parallaxStrength}>
           {item.src ? (
             <Image
               src={item.src}
@@ -294,7 +297,7 @@ function ProjectMediaFigure({
               className="h-full w-full"
             />
           )}
-        </div>
+        </ParallaxMedia>
       </div>
       {item.caption ? (
         <figcaption className="px-1 text-sm leading-6 text-muted">

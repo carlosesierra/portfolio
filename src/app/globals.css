@@ -75,3 +75,34 @@ a {
 .corner-cut {
   border-bottom-left-radius: 0 !important;
 }
+
+.parallax-media {
+  --parallax-shift: 0px;
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.parallax-media__inner {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  display: block;
+  transform: translate3d(0, var(--parallax-shift), 0) scale(1.14);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.parallax-media__content {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-media__inner {
+    transform: none;
+  }
+}

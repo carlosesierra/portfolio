@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
-import { ProjectShowcaseVisuals } from "@/components/ProjectVisuals";
-import { Tag } from "@/components/ui/Tag";
-import { Container } from "@/components/layout/Container";
+import { Button } from "@/components/button";
+import { Container } from "@/components/container";
+import { ParallaxMedia } from "@/components/parallax-media";
+import { ProjectShowcaseVisuals } from "@/components/project-visuals";
+import { Tag } from "@/components/tag";
 import { projects, type Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
@@ -96,7 +97,10 @@ export function ProjectHero({ project }: { project: Project }) {
               {project.heroImage ? (
                 <div className="mt-6 lg:hidden">
                   <div className="surface-card overflow-hidden rounded-[1.9rem] p-2.5">
-                    <div className="corner-cut relative aspect-square overflow-hidden rounded-[1.5rem]">
+                    <ParallaxMedia
+                      className="corner-cut aspect-square rounded-[1.5rem]"
+                      strength={34}
+                    >
                       <Image
                         src={project.heroImage}
                         alt={`${project.title} hero preview`}
@@ -105,7 +109,7 @@ export function ProjectHero({ project }: { project: Project }) {
                         sizes="(max-width: 639px) calc(100vw - 8.5rem), (max-width: 1023px) calc(100vw - 9.5rem)"
                         className="object-cover object-top"
                       />
-                    </div>
+                    </ParallaxMedia>
                   </div>
                 </div>
               ) : null}
@@ -128,7 +132,10 @@ export function ProjectHero({ project }: { project: Project }) {
             {project.heroImage ? (
               <div className="hidden lg:block lg:justify-self-end lg:w-full lg:max-w-[24rem]">
                 <div className="surface-card overflow-hidden rounded-[1.9rem] p-2.5">
-                  <div className="corner-cut relative aspect-[4/3] overflow-hidden rounded-[1.5rem]">
+                  <ParallaxMedia
+                    className="corner-cut aspect-[4/3] rounded-[1.5rem]"
+                    strength={40}
+                  >
                     <Image
                       src={project.heroImage}
                       alt={`${project.title} hero preview`}
@@ -137,7 +144,7 @@ export function ProjectHero({ project }: { project: Project }) {
                       sizes="(max-width: 1024px) 100vw, 30vw"
                       className="object-cover object-top"
                     />
-                  </div>
+                  </ParallaxMedia>
                 </div>
               </div>
             ) : null}

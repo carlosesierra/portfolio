@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/Button";
-import { Tag } from "@/components/ui/Tag";
-import { Container } from "@/components/layout/Container";
-import { ProjectCard } from "@/components/ProjectCard";
+import { Button } from "@/components/button";
+import { Tag } from "@/components/tag";
+import { Container } from "@/components/container";
+import { ProjectCard } from "@/components/project-card";
 import { featuredProjects } from "@/data/projects";
 import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -115,7 +115,7 @@ export function HeroSection() {
 
           <div className="surface-card rounded-4xl p-7 sm:p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
-              What I'm strongest at
+              What I&apos;m strongest at
             </p>
             <p className="mt-4 text-lg leading-7 text-foreground">
               {siteConfig.supportingLine}

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
-import { ProjectCardVisual } from "@/components/ProjectVisuals";
+import { Button } from "@/components/button";
+import { ProjectCardVisual } from "@/components/project-visuals";
 import type { Project } from "@/data/projects";
 
 type ProjectCardProps = {
