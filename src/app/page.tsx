@@ -14,10 +14,10 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <ValuePropsSection />
       <FeaturedProjectsSection />
-      <StrengthsSection />
+      <ValuePropsSection />
       <ExperienceSnapshotSection />
+      <StrengthsSection />
       <ProofMetricsSection />
       <TechStackSection />
       <AboutPreviewSection />

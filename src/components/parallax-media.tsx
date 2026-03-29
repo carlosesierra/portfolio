@@ -37,9 +37,12 @@ export function ParallaxMedia({
     const viewportCenter = window.innerHeight / 2;
     const elementCenter = rect.top + rect.height / 2;
     const denominator = viewportCenter + rect.height / 2 || 1;
+    const viewportWidth = window.innerWidth;
+    const travelRatio =
+      viewportWidth < 640 ? 0.045 : viewportWidth < 1024 ? 0.06 : 0.075;
 
     const progress = clamp((elementCenter - viewportCenter) / denominator, -1, 1);
-    const travel = Math.min(strength, rect.height * 0.08);
+    const travel = Math.min(strength, rect.height * travelRatio);
 
     // Move against scroll so the image visibly lags behind its frame.
     frame.style.setProperty("--parallax-shift", `${-progress * travel}px`);

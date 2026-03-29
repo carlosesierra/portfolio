@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f0efeb;
-  --surface: rgba(255, 255, 255, 0.74);
-  --surface-strong: rgba(255, 255, 255, 0.94);
-  --foreground: #1f1c17;
-  --muted: #838382;
-  --border: rgba(55, 45, 29, 0.12);
+  --background: #e6e1db;
+  --surface: rgba(244, 240, 235, 0.78);
+  --surface-strong: rgba(250, 247, 243, 0.92);
+  --foreground: #4c4c4c;
+  --muted: #4c4c4c;
+  --border: rgba(70, 63, 58, 0.12);
+
   --accent: #d4e4f1;
   --accent-strong: #f5ebc8;
-  --accent-soft: #cde6fa;
-  --shadow-color: rgba(31, 28, 23, 0.18);
+  --accent-soft: #d4e4f1;
+
+  --shadow-color: rgba(70, 63, 58, 0.16);
+
   --font-sans: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
   --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
   --font-mono: "SFMono-Regular", "SF Mono", "Consolas", monospace;
@@ -43,7 +46,10 @@ html {
 
 body {
   min-height: 100vh;
-  background:#f0efeb;
+  background:
+    radial-gradient(circle at top left, rgba(214, 228, 241, 0.95), transparent 32rem),
+    radial-gradient(circle at 88% 10%, rgba(245, 235, 200, 0.88), transparent 28rem),
+    linear-gradient(180deg, #f7f4ee 0%, #f1eee8 48%, #ebe7de 100%);
   color: var(--foreground);
   font-family: var(--font-sans);
 }
@@ -58,22 +64,154 @@ a {
 
 .surface-card {
   border: 1px solid var(--border);
-  background: var(--surface);
-  box-shadow: 0 24px 60px -38px var(--shadow-color);
-  backdrop-filter: blur(18px);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.68) 100%);
+  box-shadow:
+    0 30px 70px -44px var(--shadow-color),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(22px);
   border-bottom-left-radius: 0;
 }
 
 .surface-card-strong {
   border: 1px solid var(--border);
-  background: var(--surface-strong);
-  box-shadow: 0 24px 60px -38px var(--shadow-color);
-  backdrop-filter: blur(18px);
+  background:
+    linear-gradient(180deg, rgba(255, 254, 251, 0.96) 0%, rgba(255, 251, 247, 0.86) 100%);
+  box-shadow:
+    0 30px 80px -46px var(--shadow-color),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(22px);
+  border-bottom-left-radius: 0;
+}
+
+.surface-card-dark {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(30, 39, 54, 0.94) 0%, rgba(23, 31, 44, 0.98) 100%);
+  box-shadow: 0 36px 80px -48px rgba(17, 24, 34, 0.72);
+  color: #f5f1eb;
   border-bottom-left-radius: 0;
 }
 
 .corner-cut {
   border-bottom-left-radius: 0 !important;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.surface-card-dark .eyebrow {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.surface-card-dark [data-button] {
+  border-color: var(--border);
+  background-color: color-mix(in oklab, white 76%, transparent);
+  color: var(--foreground);
+  box-shadow:
+    0 12px 24px -22px rgba(23, 34, 48, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px);
+}
+
+.surface-card-dark [data-button]:hover {
+  background-color: color-mix(in oklab, white 88%, transparent);
+  color: var(--foreground);
+}
+
+.section-copy {
+  color: color-mix(in srgb, var(--foreground) 76%, white 24%);
+}
+
+.meta-chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(61, 47, 32, 0.08);
+  background: rgba(255, 255, 255, 0.72);
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.section-shell {
+  position: relative;
+}
+
+.section-shell::before {
+  content: "";
+  position: absolute;
+  left: 1.5rem;
+  right: 1.5rem;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(61, 47, 32, 0.14), transparent);
+}
+
+.hero-stage {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.25)),
+    linear-gradient(rgba(29, 26, 23, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 26, 23, 0.06) 1px, transparent 1px);
+  background-size: 100% 100%, 2.8rem 2.8rem, 2.8rem 2.8rem;
+}
+
+.hero-stage::before {
+  content: "";
+  position: absolute;
+  inset: auto auto 12% -12%;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 999px;
+  background: rgba(219, 231, 240, 0.85);
+  filter: blur(26px);
+}
+
+.hero-stage::after {
+  content: "";
+  position: absolute;
+  right: -4rem;
+  top: -3rem;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 999px;
+  background: rgba(245, 235, 200, 0.75);
+  filter: blur(24px);
+}
+
+.floating-card {
+  animation: float-card 11s ease-in-out infinite;
+}
+
+.floating-card-delay {
+  animation-delay: -3.6s;
+}
+
+.floating-card-delay-2 {
+  animation-delay: -6.4s;
+}
+
+.soft-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(61, 47, 32, 0.14), transparent);
+}
+
+.editorial-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: rgba(35, 51, 71, 0.72);
 }
 
 .parallax-media {
@@ -89,7 +227,7 @@ a {
   height: 100%;
   width: 100%;
   display: block;
-  transform: translate3d(0, var(--parallax-shift), 0) scale(1.14);
+  transform: translate3d(0, var(--parallax-shift), 0) scale(1.12);
   transform-origin: center center;
   will-change: transform;
 }
@@ -104,5 +242,47 @@ a {
 @media (prefers-reduced-motion: reduce) {
   .parallax-media__inner {
     transform: none;
+  }
+
+  .floating-card,
+  .floating-card-delay,
+  .floating-card-delay-2 {
+    animation: none;
+  }
+}
+
+
+@media (max-width: 639px) {
+  html {
+    scroll-padding-top: 5rem;
+  }
+
+  .section-shell::before {
+    left: 1rem;
+    right: 1rem;
+  }
+
+  .meta-chip {
+    padding: 0.48rem 0.74rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+  }
+
+  .hero-stage {
+    background-size: 100% 100%, 2.25rem 2.25rem, 2.25rem 2.25rem;
+  }
+
+  .parallax-media__inner {
+    transform: translate3d(0, var(--parallax-shift), 0) scale(1.08);
+  }
+}
+
+@keyframes float-card {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0);
   }
 }

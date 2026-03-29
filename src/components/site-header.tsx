@@ -17,7 +17,7 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm text-muted md:flex">
-          {siteConfig.navigation.map((item) => (
+          {siteConfig.navigation.map((item) =>
             item.href.startsWith("/#") ? (
               <a
                 key={item.href}
@@ -34,8 +34,8 @@ export function SiteHeader() {
               >
                 {item.label}
               </Link>
-            )
-          ))}
+            ),
+          )}
         </nav>
 
         <Button href="/cv" variant="secondary" className="hidden sm:inline-flex">

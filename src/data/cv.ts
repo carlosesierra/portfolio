@@ -69,8 +69,8 @@ export const cvData: CvData = {
       items: [
         "Vercel",
         "Git workflow",
-        "CMS integration",
         "Sanity (Headless CMS)",
+        "CMS integration",
         "Cross-browser QA",
         "Performance review",
       ],
@@ -95,17 +95,17 @@ export const cvData: CvData = {
   ],
   experience: [
     {
-      eyebrow: "Recent role",
+      eyebrow: "Current practice",
       role: "Frontend Engineer · Freelance",
       period: "2015 - Present",
       summary:
         "Delivering websites, landing pages and eDM campaigns for businesses that need practical, modern web presence and reliable frontend implementation.",
       highlights: [
-        "Designed, built and launched modern business websites with a focus on clarity, responsiveness and maintainable structure",
-        "Delivered one-page sites, landing pages, eDM campaigns and animated banners across a range of business needs",
-        "Handled implementation end to end, from frontend build and layout refinement through to deployment-ready deliver",
+        "Designed, built and launched modern business websites with a focus on clarity, responsiveness and maintainable structure.",
+        "Delivered one-page sites, landing pages, eDM campaigns and animated banners across a range of business needs.",
+        "Handled implementation end to end, from frontend build and layout refinement through to deployment-ready deliver."
       ],
-      stack: ["React", "Tailwind", "TypeScript", "Frontend Development", "QA Process", "eDM" ,"Web Design"],
+      stack: ["React", "Tailwind", "TypeScript", "Frontend Development", "QA Process", "eDM", "Web Design"],
     },
     {
       eyebrow: "Marketing and delivery team",
@@ -116,20 +116,20 @@ export const cvData: CvData = {
       highlights: [
         "Built responsive landing pages, eDMs and animated banner work across fast-paced campaign delivery environments.",
         "Worked across React, Bootstrap, GSAP, JavaScript, Sass and production tooling including Node and npm.",
-        "Balanced visual quality, implementation accuracy and turnaround speed across campaign-led frontend delivery.",
+        "Balanced visual quality, implementation accuracy and turnaround speed across campaign-led frontend delivery."
       ],
       stack: ["JavaScript", "React", "Bootstrap", "GSAP", "Node", "CMS Workflows", "Performance Review"],
     },
     {
-      eyebrow: "Jan 2018 - Jan 2025",
+      eyebrow: "Earlier experience",
       role: "Senior Front-End Developer · eg+ worldwide",
-      period: "Foundational experience",
+      period: "Jan 2018 - Jan 2025",
       summary:
         "Delivered frontend and digital production work across websites, responsive eDMs, HTML5 banners and landing pages, with a strong emphasis on scalable delivery and implementation quality.",
       highlights: [
         "Built responsive digital experiences across web, email and campaign formats in high-volume production environments.",
         "Worked across React, Node, GSAP, Gulp, JavaScript and Sass to support efficient and reliable campaign delivery.",
-        "Contributed to workflow improvements and repeatable production patterns that supported faster execution and consistent output quality.",
+        "Contributed to workflow improvements and repeatable production patterns that supported faster execution and consistent output quality."
       ],
       stack: ["React", "Node", "GSAP", "Gulp", "Marketing Cloud", "Campaign Production"],
     },
@@ -141,7 +141,7 @@ export const cvData: CvData = {
   ],
   education: [
     {
-      title: "Ongoing frontend specialisation",
+      title: "Ongoing full-stack specialisation",
       body:
         "Continuous learning across frontend systems, accessibility, performance and modern component-based workflows.",
     },
@@ -154,7 +154,7 @@ export const cvData: CvData = {
   tools: [
     {
       title: "Build",
-      items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML", "CSS"],
+      items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Semantic HTML", "CSS"],
     },
     {
       title: "Interface",

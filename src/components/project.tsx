@@ -13,6 +13,7 @@ type SectionHeadingProps = {
   title: string;
   copy?: string;
   align?: "left" | "center";
+  invert?: boolean;
 };
 
 type TagsProps = {
@@ -22,7 +23,7 @@ type TagsProps = {
 
 type MetaItemProps = {
   label: string;
-  value: React.ReactNode;
+  value: string;
 };
 
 function SectionHeading({
@@ -30,21 +31,30 @@ function SectionHeading({
   title,
   copy,
   align = "left",
+  invert = false,
 }: SectionHeadingProps) {
   return (
     <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center")}>
       {eyebrow ? (
-        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
-          {eyebrow}
-        </p>
+        <p className={cn("eyebrow", invert && "text-white/55")}>{eyebrow}</p>
       ) : null}
 
-      <h2 className="mt-3 font-serif text-4xl leading-tight tracking-tight text-foreground sm:text-5xl">
+      <h2
+        className={cn(
+          "mt-4 font-serif text-4xl leading-[0.98] tracking-tight sm:text-5xl",
+          invert ? "text-white" : "text-foreground",
+        )}
+      >
         {title}
       </h2>
 
       {copy ? (
-        <p className="mt-5 max-w-2xl text-base leading-7 text-muted sm:text-lg">
+        <p
+          className={cn(
+            "mt-5 max-w-2xl text-base leading-7 sm:text-lg sm:leading-8",
+            invert ? "text-white/72" : "section-copy",
+          )}
+        >
           {copy}
         </p>
       ) : null}
@@ -54,7 +64,7 @@ function SectionHeading({
 
 function Tags({ items, className }: TagsProps) {
   return (
-    <div className={cn("flex flex-wrap gap-2", className)}>
+    <div className={cn("flex flex-wrap gap-2.5", className)}>
       {items.map((item) => (
         <Tag key={item}>{item}</Tag>
       ))}
@@ -64,12 +74,121 @@ function Tags({ items, className }: TagsProps) {
 
 function MetaItem({ label, value }: MetaItemProps) {
   return (
-    <div className="surface-card rounded-[1.5rem] px-5 py-4">
-      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted">
-        {label}
-      </p>
-      <div className="mt-3 text-sm leading-6 text-foreground">{value}</div>
+    <div className="surface-card rounded-[1.7rem] px-5 py-5">
+      <p className="eyebrow">{label}</p>
+      <p className="mt-3 text-sm leading-6 text-foreground sm:text-base">{value}</p>
     </div>
+  );
+}
+
+function InsightCard({
+  title,
+  body,
+  index,
+  invert = false,
+}: {
+  title: string;
+  body: string;
+  index?: number;
+  invert?: boolean;
+}) {
+  return (
+    <article
+      className={cn(
+        "rounded-[1.9rem] p-6",
+        invert
+          ? "border border-white/10 bg-white/6"
+          : "surface-card",
+      )}
+    >
+      {typeof index === "number" ? (
+        <p
+          className={cn(
+            "font-serif text-4xl leading-none tracking-tight",
+            invert ? "text-white/24" : "text-foreground/20",
+          )}
+        >
+          {String(index + 1).padStart(2, "0")}
+        </p>
+      ) : null}
+      <h3
+        className={cn(
+          "mt-4 text-xl font-semibold tracking-tight",
+          invert ? "text-white" : "text-foreground",
+        )}
+      >
+        {title}
+      </h3>
+      <p
+        className={cn(
+          "mt-4 text-sm leading-7 sm:text-base",
+          invert ? "text-white/72" : "text-muted",
+        )}
+      >
+        {body}
+      </p>
+    </article>
+  );
+}
+
+function NarrativePanel({
+  eyebrow,
+  title,
+  body,
+  highlight,
+  invert = false,
+}: {
+  eyebrow: string;
+  title: string;
+  body: string;
+  highlight?: string;
+  invert?: boolean;
+}) {
+  return (
+    <article
+      className={cn(
+        "rounded-[2.35rem] p-7 sm:p-8",
+        invert ? "surface-card-dark" : "surface-card",
+      )}
+    >
+      <p className={cn("eyebrow", invert && "text-white/55")}>{eyebrow}</p>
+      <h3
+        className={cn(
+          "mt-4 font-serif text-3xl leading-tight tracking-tight sm:text-4xl",
+          invert ? "text-white" : "text-foreground",
+        )}
+      >
+        {title}
+      </h3>
+      <p
+        className={cn(
+          "mt-5 max-w-[46ch] text-base leading-8 sm:text-lg",
+          invert ? "text-white/74" : "text-muted",
+        )}
+      >
+        {body}
+      </p>
+      {highlight ? (
+        <div
+          className={cn(
+            "corner-cut mt-7 rounded-[1.8rem] px-5 py-5",
+            invert
+              ? "border border-white/10 bg-white/7"
+              : "bg-accent-soft/72",
+          )}
+        >
+          <p className={cn("eyebrow", invert && "text-white/45")}>Key point</p>
+          <p
+            className={cn(
+              "mt-3 text-sm leading-7 sm:text-base",
+              invert ? "text-white/82" : "text-foreground",
+            )}
+          >
+            {highlight}
+          </p>
+        </div>
+      ) : null}
+    </article>
   );
 }
 
@@ -77,77 +196,74 @@ export function ProjectHero({ project }: { project: Project }) {
   const projectUrl = project.liveUrl ?? project.githubUrl;
 
   return (
-    <section className="pb-10 pt-16 sm:pb-12 sm:pt-20">
+    <section className="pb-8 pt-8 sm:pb-12 sm:pt-12">
       <Container>
-        <div className="surface-card-strong rounded-[2.5rem] p-8 sm:p-10">
-          <div
-            className={cn(
-              project.heroImage &&
-                "grid gap-8 lg:grid-cols-[minmax(0,0.67fr)_minmax(18rem,0.33fr)] lg:items-start",
-            )}
-          >
-            <div className="min-w-0">
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
-                Case Study
-              </p>
-              <h1 className="mt-4 max-w-4xl font-serif text-4xl leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+        <div className="surface-card-strong rounded-[2.85rem] p-4 sm:p-5 lg:p-6">
+          <div className="grid gap-5 xl:grid-cols-[minmax(0,0.54fr)_minmax(0,0.46fr)] xl:items-stretch">
+            <div className="rounded-[2.2rem] bg-white/62 p-6 sm:p-8 lg:p-10">
+              <div className="flex flex-wrap gap-2">
+                <span className="meta-chip">Case study</span>
+                <span className="meta-chip">{project.client}</span>
+                <span className="meta-chip">{project.period}</span>
+              </div>
+
+              <h1 className="mt-6 font-serif text-[3rem] leading-[0.94] tracking-tight text-foreground sm:text-5xl lg:text-[4.2rem]">
                 {project.title}
               </h1>
 
-              {project.heroImage ? (
-                <div className="mt-6 lg:hidden">
-                  <div className="surface-card overflow-hidden rounded-[1.9rem] p-2.5">
-                    <ParallaxMedia
-                      className="corner-cut aspect-square rounded-[1.5rem]"
-                      strength={34}
-                    >
-                      <Image
-                        src={project.heroImage}
-                        alt={`${project.title} hero preview`}
-                        fill
-                        priority
-                        sizes="(max-width: 639px) calc(100vw - 8.5rem), (max-width: 1023px) calc(100vw - 9.5rem)"
-                        className="object-cover object-top"
-                      />
-                    </ParallaxMedia>
-                  </div>
-                </div>
-              ) : null}
+              <p className="mt-5 text-lg leading-7 tracking-tight text-foreground/86 sm:text-[1.7rem] sm:leading-9">
+                {project.tagline}
+              </p>
 
-              <p className="mt-5 max-w-3xl text-base leading-8 text-muted sm:text-lg">
+              <p className="section-copy mt-6 max-w-2xl text-base leading-7 sm:text-lg sm:leading-8">
                 {project.summary}
               </p>
+
               <Tags items={project.focus} className="mt-6" />
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button href="/#projects" variant="secondary">
                   Back to Projects
                 </Button>
-                {projectUrl ? (
-                  <Button href={projectUrl}>Visit Project</Button>
-                ) : null}
+                {projectUrl ? <Button href={projectUrl}>Visit Project</Button> : null}
               </div>
             </div>
 
-            {project.heroImage ? (
-              <div className="hidden lg:block lg:justify-self-end lg:w-full lg:max-w-[24rem]">
-                <div className="surface-card overflow-hidden rounded-[1.9rem] p-2.5">
+            <div className="space-y-4">
+              {project.heroImage ? (
+                <div className="surface-card overflow-hidden rounded-[2.2rem] p-2.5">
                   <ParallaxMedia
-                    className="corner-cut aspect-[4/3] rounded-[1.5rem]"
-                    strength={40}
+                    className="corner-cut h-[20rem] rounded-[1.8rem] sm:h-[26rem] lg:h-[31rem]"
+                    strength={34}
                   >
                     <Image
                       src={project.heroImage}
                       alt={`${project.title} hero preview`}
                       fill
                       priority
-                      sizes="(max-width: 1024px) 100vw, 30vw"
+                      sizes="(max-width: 1279px) 100vw, 42vw"
                       className="object-cover object-top"
                     />
                   </ParallaxMedia>
                 </div>
+              ) : null}
+
+              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
+                {project.metrics.map((metric) => (
+                  <article
+                    key={metric.label}
+                    className="corner-cut rounded-[1.65rem] border border-border bg-white/68 px-5 py-5"
+                  >
+                    <p className="font-serif text-[1.45rem] leading-tight tracking-tight text-foreground sm:text-[1.6rem]">
+                      {metric.value}
+                    </p>
+                    <p className="mt-2.5 text-sm leading-6 text-muted">
+                      {metric.label}
+                    </p>
+                  </article>
+                ))}
               </div>
-            ) : null}
+            </div>
           </div>
         </div>
       </Container>
@@ -157,13 +273,16 @@ export function ProjectHero({ project }: { project: Project }) {
 
 export function ProjectSummaryBar({ project }: { project: Project }) {
   return (
-    <section className="pb-10">
+    <section className="pb-8 sm:pb-10">
       <Container>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           <MetaItem label="Focus" value={project.summaryFocus ?? project.client} />
           <MetaItem label="Role" value={project.role} />
           <MetaItem label="Period" value={project.period} />
-          <MetaItem label="Context" value={project.stack.slice(0, 4).join(", ")} />
+          <MetaItem
+            label="Stack"
+            value={project.stack.slice(0, 4).join(", ")}
+          />
         </div>
       </Container>
     </section>
@@ -172,60 +291,56 @@ export function ProjectSummaryBar({ project }: { project: Project }) {
 
 export function ProjectVisualShowcase({ project }: { project: Project }) {
   return (
-    <section className="py-10 sm:py-12">
+    <section className="section-shell py-12 sm:py-16">
       <Container>
-        <SectionHeading
-          eyebrow="Showcase"
-          title="A summary of the project priorities."
-          copy={
-            project.showcaseIntro ??
-            "The implementation priorities were shaped around clarity, maintainability and a frontend structure that could hold up in production."
-          }
-        />
+        <div className="grid gap-8 sm:gap-10 xl:grid-cols-[minmax(0,0.68fr)_minmax(17rem,0.32fr)] xl:items-start">
+          <div>
+            <SectionHeading
+              eyebrow="Showcase"
+              title="Visual proof of the interface and the delivery priorities behind it."
+              copy={
+                project.showcaseIntro ??
+                "The visuals below are there to support the story of the work, not to decorate it."
+              }
+            />
 
-        <div className="mt-10 grid gap-5 xl:grid-cols-[1.18fr_0.82fr] xl:items-start">
-          <ProjectShowcaseVisuals project={project} />
+            <ProjectShowcaseVisuals project={project} className="mt-8 sm:mt-10" />
+          </div>
 
-          <div className="space-y-5">
-            <div className="surface-card rounded-[2rem] p-6 sm:p-8">
-              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-1">
+          <aside className="space-y-5 xl:sticky xl:top-32">
+            <div className="surface-card-dark rounded-[2.2rem] px-6 py-7">
+              <p className="eyebrow text-white/55">Focus areas</p>
+              <Tags
+                items={project.showcaseFocus ?? project.focus}
+                className="mt-5 [&>span]:border-white/10 [&>span]:bg-white/8 [&>span]:text-white/70"
+              />
+
+              <div className="mt-7 space-y-3">
                 {project.metrics.map((metric) => (
-                  <article
+                  <div
                     key={metric.label}
-                    className="corner-cut rounded-[1.5rem] border border-border bg-white/78 p-5"
+                    className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4"
                   >
-                    <p className="text-lg font-semibold leading-tight tracking-tight text-foreground">
+                    <p className="text-lg font-semibold tracking-tight text-white">
                       {metric.value}
                     </p>
-                    <p className="mt-3 max-w-[34ch] text-sm leading-7 text-muted">
+                    <p className="mt-2 text-sm leading-6 text-white/68">
                       {metric.label}
                     </p>
-                  </article>
+                  </div>
                 ))}
               </div>
             </div>
 
-            <div className="surface-card rounded-[2rem] p-6 sm:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted">
-                Focus Areas
+            <div className="surface-card rounded-[2.2rem] p-6">
+              <p className="eyebrow">Outcome direction</p>
+              <p className="mt-4 text-base leading-8 text-foreground">
+                {project.outcome}
               </p>
-              <Tags items={project.showcaseFocus ?? project.focus} className="mt-5" />
-
-              <div className="corner-cut mt-8 rounded-[1.75rem] border border-border bg-white/75 p-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted">
-                  Summary
-                </p>
-                <p className="mt-3 text-sm leading-7 text-muted">{project.tagline}</p>
-              </div>
-
-              <div className="corner-cut mt-5 rounded-[1.75rem] bg-accent-soft/75 p-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted">
-                  Outcome direction
-                </p>
-                <p className="mt-3 text-sm leading-7 text-foreground">{project.outcome}</p>
-              </div>
+              <div className="soft-divider mt-6" />
+              <p className="mt-6 text-sm leading-7 text-muted">{project.tagline}</p>
             </div>
-          </div>
+          </aside>
         </div>
       </Container>
     </section>
@@ -234,14 +349,14 @@ export function ProjectVisualShowcase({ project }: { project: Project }) {
 
 export function ProjectOverviewSection({ project }: { project: Project }) {
   return (
-    <section className="py-10 sm:py-12">
+    <section className="section-shell py-12 sm:py-16">
       <Container>
-        <SectionHeading eyebrow="Overview" title="Project context" />
-        <div className="mt-8 surface-card rounded-[2rem] p-7 sm:p-8">
-          <p className="max-w-3xl text-base leading-8 text-muted sm:text-lg">
-            {project.overview}
-          </p>
-        </div>
+        <NarrativePanel
+          eyebrow="Overview"
+          title="Project context"
+          body={project.overview}
+          highlight={project.referenceSummary ?? project.summary}
+        />
       </Container>
     </section>
   );
@@ -249,14 +364,15 @@ export function ProjectOverviewSection({ project }: { project: Project }) {
 
 export function ProjectChallengeSection({ project }: { project: Project }) {
   return (
-    <section className="py-10 sm:py-12">
+    <section className="section-shell py-12 sm:py-16">
       <Container>
-        <SectionHeading eyebrow="Challenge" title="The main problem to solve" />
-        <div className="mt-8 surface-card rounded-[2rem] p-7 sm:p-8">
-          <p className="max-w-3xl text-base leading-8 text-muted sm:text-lg">
-            {project.challenge}
-          </p>
-        </div>
+        <NarrativePanel
+          eyebrow="Challenge"
+          title="The main problem to solve"
+          body={project.challenge}
+          highlight={project.showcaseIntro}
+          invert
+        />
       </Container>
     </section>
   );
@@ -264,20 +380,24 @@ export function ProjectChallengeSection({ project }: { project: Project }) {
 
 export function ProjectRoleSection({ project }: { project: Project }) {
   return (
-    <section className="py-10 sm:py-12">
+    <section className="section-shell py-12 sm:py-16">
       <Container>
-        <SectionHeading
-          eyebrow="Role"
-          title="Scope of contribution"
-          copy="The points below reflect the parts of the work I directly shaped across frontend implementation, structure and delivery."
-        />
+        <div className="grid gap-10 xl:grid-cols-[minmax(0,0.38fr)_minmax(0,0.62fr)] xl:items-start">
+          <SectionHeading
+            eyebrow="Role"
+            title="Where my contribution sat in the delivery."
+            copy="This list stays specific on purpose. It shows what I directly shaped rather than padding the case study with vague ownership."
+          />
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
-          {project.responsibilities.map((item) => (
-            <article key={item} className="surface-card rounded-[1.75rem] p-5">
-              <p className="text-sm leading-7 text-foreground">{item}</p>
-            </article>
-          ))}
+          <div className="grid gap-4 sm:grid-cols-2">
+            {project.responsibilities.map((item, index) => (
+              <InsightCard
+                key={item}
+                title={`Contribution ${index + 1}`}
+                body={item}
+              />
+            ))}
+          </div>
         </div>
       </Container>
     </section>
@@ -286,19 +406,29 @@ export function ProjectRoleSection({ project }: { project: Project }) {
 
 export function ProjectApproachSection({ project }: { project: Project }) {
   return (
-    <section className="py-10 sm:py-12">
+    <section className="section-shell py-12 sm:py-16">
       <Container>
-        <SectionHeading eyebrow="Approach" title="How the work was structured" />
+        <div className="surface-card-dark rounded-[2.7rem] px-6 py-8 sm:px-8 sm:py-10">
+          <div className="grid gap-8 xl:grid-cols-[minmax(0,0.36fr)_minmax(0,0.64fr)]">
+            <SectionHeading
+              eyebrow="Approach"
+              title="How the work was structured"
+              copy="These were the delivery principles that shaped the implementation and helped keep the work practical in production."
+              invert
+            />
 
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-          {project.approach.map((item) => (
-            <article key={item.title} className="surface-card rounded-[2rem] p-6">
-              <h3 className="text-lg font-semibold tracking-tight text-foreground">
-                {item.title}
-              </h3>
-              <p className="mt-4 text-sm leading-7 text-muted">{item.body}</p>
-            </article>
-          ))}
+            <div className="grid gap-4 md:grid-cols-3">
+              {project.approach.map((item, index) => (
+                <InsightCard
+                  key={item.title}
+                  title={item.title}
+                  body={item.body}
+                  index={index}
+                  invert
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </Container>
     </section>
@@ -307,21 +437,31 @@ export function ProjectApproachSection({ project }: { project: Project }) {
 
 export function ProjectUxDecisionsSection({ project }: { project: Project }) {
   return (
-    <section className="py-14 sm:py-16">
+    <section className="section-shell py-12 sm:py-16">
       <Container>
-        <SectionHeading eyebrow="UX Decisions" title="Design and UX decisions" />
+        <div className="grid gap-10 xl:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] xl:items-start">
+          <SectionHeading
+            eyebrow="UX decisions"
+            title="Interface decisions that supported clarity, usability and trust."
+            copy="This section focuses on design-aware implementation choices rather than generic UI praise."
+          />
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          {project.uxDecisions.map((item) => (
-            <article key={item.title} className="surface-card h-full rounded-[2rem] p-6">
-              <h3 className="text-lg font-semibold tracking-tight text-foreground">
-                {item.title}
-              </h3>
-              <p className="mt-4 text-base leading-7 text-foreground/75">
-                {item.body}
-              </p>
-            </article>
-          ))}
+          <div className="grid gap-4 sm:grid-cols-2">
+            {project.uxDecisions.map((item) => (
+              <article
+                key={item.title}
+                className="surface-card rounded-[1.95rem] p-6"
+              >
+                <p className="eyebrow">Decision</p>
+                <h3 className="mt-4 text-xl font-semibold tracking-tight text-foreground">
+                  {item.title}
+                </h3>
+                <p className="mt-4 text-sm leading-7 text-muted sm:text-base">
+                  {item.body}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
       </Container>
     </section>
@@ -334,18 +474,23 @@ export function ProjectTechImplementationSection({
   project: Project;
 }) {
   return (
-    <section className="py-10 sm:py-12">
+    <section className="section-shell py-12 sm:py-16">
       <Container>
-        <SectionHeading
-          eyebrow="Technical Implementation"
-          title="What the build relied on"
-        />
+        <div className="grid gap-5 xl:grid-cols-[minmax(0,0.56fr)_minmax(0,0.44fr)]">
+          <NarrativePanel
+            eyebrow="Technical implementation"
+            title="What the build relied on"
+            body={project.technicalImplementation}
+          />
 
-        <div className="mt-8 surface-card rounded-[2rem] p-7 sm:p-8">
-          <p className="max-w-3xl text-base leading-8 text-muted sm:text-lg">
-            {project.technicalImplementation}
-          </p>
-          <Tags items={project.stack} className="mt-6" />
+          <article className="surface-card rounded-[2.35rem] p-7 sm:p-8">
+            <p className="eyebrow">Stack in context</p>
+            <p className="mt-4 text-base leading-8 text-foreground">
+              The technical layer was kept aligned with the delivery goal: make the
+              interface maintainable, production-ready and easy to evolve.
+            </p>
+            <Tags items={project.stack} className="mt-6" />
+          </article>
         </div>
       </Container>
     </section>
@@ -358,28 +503,38 @@ export function ProjectChallengesSolutionsSection({
   project: Project;
 }) {
   return (
-    <section className="py-10 sm:py-12">
+    <section className="section-shell py-12 sm:py-16">
       <Container>
-        <SectionHeading
-          eyebrow="Challenges And Solutions"
-          title="Tradeoffs handled during delivery"
-        />
+        <div className="grid gap-10 xl:grid-cols-[minmax(0,0.38fr)_minmax(0,0.62fr)] xl:items-start">
+          <SectionHeading
+            eyebrow="Challenges and solutions"
+            title="Tradeoffs handled during delivery."
+            copy="Real frontend work usually involves constraints. These challenge-solution pairs keep the case study grounded in that reality."
+          />
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          {project.challengesSolutions.map((item) => (
-            <article key={item.challenge} className="surface-card rounded-[2rem] p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted">
-                Challenge
-              </p>
-              <p className="mt-3 text-sm leading-7 text-foreground">
-                {item.challenge}
-              </p>
-              <p className="mt-5 text-xs font-semibold uppercase tracking-[0.24em] text-muted">
-                Solution
-              </p>
-              <p className="mt-3 text-sm leading-7 text-muted">{item.solution}</p>
-            </article>
-          ))}
+          <div className="space-y-4">
+            {project.challengesSolutions.map((item) => (
+              <article
+                key={item.challenge}
+                className="surface-card rounded-[2rem] p-6"
+              >
+                <div className="grid gap-5 lg:grid-cols-2">
+                  <div>
+                    <p className="eyebrow">Challenge</p>
+                    <p className="mt-3 text-sm leading-7 text-foreground sm:text-base">
+                      {item.challenge}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="eyebrow">Solution</p>
+                    <p className="mt-3 text-sm leading-7 text-muted sm:text-base">
+                      {item.solution}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </Container>
     </section>
@@ -388,21 +543,26 @@ export function ProjectChallengesSolutionsSection({
 
 export function ProjectOutcomeSection({ project }: { project: Project }) {
   return (
-    <section className="py-10 sm:py-12">
+    <section className="section-shell py-12 sm:py-16">
       <Container>
-        <SectionHeading eyebrow="Outcome" title="What improved by the end of the work" />
-
-        <div className="mt-8 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="surface-card rounded-[2rem] p-7 sm:p-8">
-            <p className="font-serif text-3xl leading-tight tracking-tight text-foreground">
-              {project.outcome}
-            </p>
-          </div>
+        <div className="grid gap-5 xl:grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)]">
+          <NarrativePanel
+            eyebrow="Outcome"
+            title="What improved by the end of the work"
+            body={project.outcome}
+            highlight={project.outcomePoints[0]}
+            invert
+          />
 
           <div className="grid gap-4 sm:grid-cols-2">
             {project.outcomePoints.map((item) => (
-              <article key={item} className="surface-card rounded-[1.75rem] p-5">
-                <p className="text-sm leading-7 text-foreground">{item}</p>
+              <article
+                key={item}
+                className="surface-card rounded-[1.85rem] px-5 py-5"
+              >
+                <p className="text-sm leading-7 text-foreground sm:text-base">
+                  {item}
+                </p>
               </article>
             ))}
           </div>
@@ -414,17 +574,33 @@ export function ProjectOutcomeSection({ project }: { project: Project }) {
 
 export function ProjectNextStepsSection({ project }: { project: Project }) {
   return (
-    <section className="py-10 sm:py-12">
+    <section className="section-shell py-12 sm:py-16">
       <Container>
-        <SectionHeading
-          eyebrow="Next Steps"
-          title="What I would refine if the project continued"
-        />
+        <div className="surface-card rounded-[2.6rem] px-6 py-8 sm:px-8 sm:py-10">
+          <div className="grid gap-8 xl:grid-cols-[minmax(0,0.56fr)_minmax(16rem,0.44fr)] xl:items-end">
+            <SectionHeading
+              eyebrow="Next steps"
+              title="What I would refine if the project continued."
+              copy={project.nextSteps}
+            />
 
-        <div className="mt-8 surface-card rounded-[2rem] p-7 sm:p-8">
-          <p className="max-w-3xl text-base leading-8 text-muted sm:text-lg">
-            {project.nextSteps}
-          </p>
+            <div className="space-y-4">
+              <div className="corner-cut rounded-[1.85rem] bg-accent-soft/68 p-6">
+                <p className="eyebrow">Forward-looking note</p>
+                <p className="mt-3 text-sm leading-7 text-foreground sm:text-base">
+                  Future iteration would build on the same principle used throughout
+                  the project: keep the interface credible, maintainable and easier
+                  to extend than the version before it.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <Button href="/cv" variant="secondary">
+                  View CV
+                </Button>
+                <Button href="/#projects">More Projects</Button>
+              </div>
+            </div>
+          </div>
         </div>
       </Container>
     </section>
@@ -448,26 +624,26 @@ export function ProjectPager({ currentSlug }: { currentSlug: string }) {
         <div className="grid gap-5 md:grid-cols-2">
           <Link
             href={`/projects/${previousProject.slug}`}
-            className="surface-card rounded-[2rem] p-6 transition-colors hover:bg-white/85"
+            className="surface-card rounded-[2.1rem] px-6 py-6 transition-colors hover:bg-white/85"
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted">
-              Previous
-            </p>
-            <p className="mt-3 text-xl font-semibold tracking-tight text-foreground">
+            <p className="eyebrow">Previous project</p>
+            <p className="mt-4 font-serif text-3xl leading-tight tracking-tight text-foreground">
               {previousProject.title}
+            </p>
+            <p className="mt-3 text-sm leading-7 text-muted">
+              {previousProject.client}
             </p>
           </Link>
 
           <Link
             href={`/projects/${nextProject.slug}`}
-            className="surface-card rounded-[2rem] p-6 transition-colors hover:bg-white/85"
+            className="surface-card rounded-[2.1rem] px-6 py-6 transition-colors hover:bg-white/85"
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted">
-              Next
-            </p>
-            <p className="mt-3 text-xl font-semibold tracking-tight text-foreground">
+            <p className="eyebrow">Next project</p>
+            <p className="mt-4 font-serif text-3xl leading-tight tracking-tight text-foreground">
               {nextProject.title}
             </p>
+            <p className="mt-3 text-sm leading-7 text-muted">{nextProject.client}</p>
           </Link>
         </div>
       </Container>

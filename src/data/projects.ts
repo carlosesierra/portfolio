@@ -327,7 +327,7 @@ export const projects: Project[] = [
     outcome:
       "A cleaner content workflow with reusable page patterns and a stronger frontend base for ongoing updates.",
     featured: true,
-    liveUrl: "https://www.vaaonline.org.au/",
+    liveUrl: "https://www.venezuelanassociationaustralia.com.au/",
     heroImage: "/projects/vaa/vaa-hero.webp",
     gallery: [
       {

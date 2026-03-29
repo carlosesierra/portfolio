@@ -8,6 +8,12 @@ type ProjectVisualsProps = {
   className?: string;
 };
 
+type ProjectCardVisualProps = {
+  project: Project;
+  variant?: "feature" | "standard";
+  eagerImage?: boolean;
+};
+
 type ProjectMediaProps = {
   project: Project;
   item: ProjectImage;
@@ -268,7 +274,7 @@ function ProjectMediaFigure({
     item.frameClassName ?? getAspectClass(itemKind),
   );
   const parallaxStrength =
-    itemKind === "mobile" ? 34 : compact ? 28 : itemKind === "hero" ? 40 : 36;
+    itemKind === "mobile" ? 24 : compact ? 20 : itemKind === "hero" ? 34 : 28;
 
   return (
     <figure className={wrapperClass}>
@@ -308,18 +314,53 @@ function ProjectMediaFigure({
   );
 }
 
-export function ProjectCardVisual({ project }: ProjectVisualsProps) {
+export function ProjectCardVisual({
+  project,
+  variant = "standard",
+  eagerImage = false,
+}: ProjectCardVisualProps) {
+  const isFeature = variant === "feature";
+  const frameClassName = isFeature
+    ? "h-[18rem] sm:h-[24rem] xl:h-[26rem]"
+    : "h-[16.5rem] sm:h-[19rem]";
+  const strength = isFeature ? 26 : 20;
+
   return (
-    <ProjectMediaFigure
-      project={project}
-      item={{
-        src: project.heroImage,
-        alt: `${project.title} project preview`,
-        kind: "hero",
-      }}
-      compact
-      className="w-full"
-    />
+    <figure className="w-full">
+      <div className="surface-card overflow-hidden rounded-[1.85rem] p-2.5">
+        <ParallaxMedia
+          className={cn("corner-cut rounded-[1.5rem]", frameClassName)}
+          strength={strength}
+        >
+          {project.heroImage ? (
+            <Image
+              src={project.heroImage}
+              alt={`${project.title} project preview`}
+              width={1600}
+              height={1000}
+              loading={eagerImage ? "eager" : "lazy"}
+              fetchPriority={eagerImage ? "high" : undefined}
+              sizes={
+                isFeature
+                  ? "(max-width: 1279px) 100vw, 42rem"
+                  : "(max-width: 1024px) 100vw, 32vw"
+              }
+              className="h-full w-full object-cover object-top"
+            />
+          ) : (
+            <ProjectFallbackVisual
+              project={project}
+              item={{
+                alt: `${project.title} project preview`,
+                kind: "hero",
+              }}
+              compact={!isFeature}
+              className="h-full w-full"
+            />
+          )}
+        </ParallaxMedia>
+      </div>
+    </figure>
   );
 }
 
@@ -330,7 +371,7 @@ export function ProjectShowcaseVisuals({
   const gallery = project.gallery?.length ? project.gallery : getFallbackGallery(project);
 
   return (
-    <div className={cn("space-y-5", className)}>
+    <div className={cn("space-y-4 sm:space-y-5", className)}>
       <ProjectMediaFigure
         project={project}
         item={{
