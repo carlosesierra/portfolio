@@ -17,7 +17,7 @@ type DetailItemProps = {
 
 function DetailItem({ label, value }: DetailItemProps) {
   return (
-    <div className="rounded-[1.35rem] border border-border bg-white/62 px-4 py-3">
+    <div className="border border-border bg-white/62 px-4 py-3">
       <p className="eyebrow">{label}</p>
       <p className="mt-2 text-sm leading-6 text-foreground">{value}</p>
     </div>
@@ -33,7 +33,7 @@ export function ProjectCard({
   const projectUrl = project.liveUrl ?? project.githubUrl;
 
   return (
-    <article className="surface-card-strong rounded-[2.35rem] p-3 sm:p-4">
+    <article className="surface-card p-3 sm:p-4">
       <div
         className={cn(
           "grid gap-5",
@@ -59,7 +59,7 @@ export function ProjectCard({
 
           <h3
             className={cn(
-              "mt-5 font-serif leading-[0.98] tracking-tight text-foreground",
+              "mt-5 font-semibold leading-[0.98] tracking-tight text-foreground",
               isFeature ? "text-[2.7rem] sm:text-5xl" : "text-[1.9rem] sm:text-[2.25rem]",
             )}
           >
@@ -84,7 +84,7 @@ export function ProjectCard({
             />
           </div>
 
-          <div className="corner-cut mt-6 rounded-[1.8rem] bg-accent-soft/72 p-5 sm:p-6">
+          <div className="mt-6 bg-accent-soft/72 p-5 sm:p-6">
             <p className="eyebrow">Outcome</p>
             <p className="mt-3 text-sm leading-7 text-foreground sm:text-base">
               {project.outcome}

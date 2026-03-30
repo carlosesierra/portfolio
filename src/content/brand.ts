@@ -27,7 +27,8 @@ export const brandContent = {
     { label: "Projects", href: "/#projects" },
     { label: "About", href: "/#about" },
     { label: "CV", href: "/cv" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/carlosesierra/" },
+    { label: "GitHub", href: "https://github.com/carlosesierra" },
   ],
-  footerBlurb:
-    "Built with React / Next.js / Tailwind by Carlos Sierra. Focused on clean systems, accessible implementation and practical frontend delivery.",
+  footerBlurb: "Built with Next.js, TypeScript and Tailwind CSS by Carlos Sierra.",
 } as const satisfies BrandContent;

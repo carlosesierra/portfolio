@@ -43,7 +43,7 @@ function SectionHeading({
 
       <h2
         className={cn(
-          "mt-4 font-serif text-4xl leading-[0.98] tracking-tight sm:text-5xl",
+          "mt-4",
           invert ? "text-white" : "text-foreground",
         )}
       >
@@ -86,11 +86,11 @@ function ExperienceItem({ item }: { item: CvExperienceItem }) {
   const { title, company } = splitRoleMeta(item.role);
 
   return (
-    <article className="surface-card rounded-[2.35rem] p-6 sm:p-8">
+    <article className="surface-card p-6 sm:p-8">
       <div className="grid gap-8 xl:grid-cols-[minmax(14rem,0.3fr)_minmax(0,0.7fr)] xl:items-start">
         <div>
           <p className="eyebrow">{item.eyebrow}</p>
-          <h3 className="mt-4 font-serif text-3xl leading-tight tracking-tight text-foreground sm:text-4xl">
+          <h3 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl">
             {title}
           </h3>
           {company ? (
@@ -99,7 +99,7 @@ function ExperienceItem({ item }: { item: CvExperienceItem }) {
             </p>
           ) : null}
 
-          <div className="corner-cut mt-6 rounded-[1.65rem] bg-accent-soft/68 px-4 py-4">
+          <div className="mt-6 bg-accent-soft/68 px-4 py-4">
             <p className="eyebrow">Period</p>
             <p className="mt-2 text-sm leading-6 text-foreground sm:text-base">
               {item.period}
@@ -114,7 +114,7 @@ function ExperienceItem({ item }: { item: CvExperienceItem }) {
             {item.highlights.map((highlight) => (
               <div
                 key={highlight}
-                className="rounded-[1.55rem] border border-border bg-white/6 px-4 py-4"
+                className="border border-border bg-white/6 px-4 py-4"
               >
                 <p className="text-sm leading-7 text-foreground sm:text-base">
                   {highlight}
@@ -134,11 +134,11 @@ export function CvHero() {
   return (
     <section className="pb-8 pt-8 sm:pb-12 sm:pt-12">
       <Container>
-        <div className="surface-card-strong rounded-[2.8rem] px-6 py-8 sm:px-8 sm:py-10">
+        <div className="surface-card px-6 py-8 sm:px-8 sm:py-10">
           <div className="grid gap-8 xl:grid-cols-[minmax(0,0.64fr)_minmax(16rem,0.36fr)] xl:items-end">
             <div className="max-w-3xl">
               <p className="eyebrow">{cvContent.hero.eyebrow}</p>
-              <h1 className="mt-4 font-serif text-[3rem] leading-[0.96] tracking-tight text-foreground sm:text-5xl lg:text-[4.2rem]">
+              <h1 className="mt-4 text-[3rem] leading-[0.96] tracking-tight text-foreground sm:text-5xl lg:text-[4.2rem]">
                 {brandContent.name}
               </h1>
               <p className="mt-4 text-xl tracking-tight text-foreground/86 sm:text-[1.7rem]">
@@ -150,7 +150,7 @@ export function CvHero() {
             </div>
 
             <div className="space-y-4">
-              <div className="rounded-4xl border border-border bg-white/66 p-5">
+              <div className="border border-border bg-white/66 p-5">
                 <p className="eyebrow">{cvContent.hero.snapshotLabel}</p>
                 <dl className="mt-4 space-y-4">
                   <div>
@@ -192,7 +192,7 @@ export function ProfessionalSummarySection() {
   return (
     <section className="section-shell py-12 sm:py-16">
       <Container>
-        <div className="surface-card-dark rounded-[2.35rem] p-7 sm:p-8">
+        <div className="surface-card-dark p-7 sm:p-8">
           <div className="max-w-4xl">
             <SectionHeading
               eyebrow={cvContent.professionalSummary.eyebrow}
@@ -226,7 +226,7 @@ export function CoreSkillsSection() {
           {cvContent.coreSkills.groups.map((group) => (
             <article
               key={group.title}
-              className="surface-card rounded-[2.2rem] p-6 sm:p-7"
+              className="surface-card p-6 sm:p-7"
             >
               <p className="eyebrow">{group.title}</p>
               <Tags items={group.items} className="mt-6" />
@@ -242,7 +242,7 @@ export function HighlightsSection() {
   return (
     <section className="section-shell py-12 sm:py-16">
       <Container>
-        <div className="surface-card-dark rounded-[2.7rem] px-6 py-8 sm:px-8 sm:py-10">
+        <div className="surface-card-dark px-6 py-8 sm:px-8 sm:py-10">
           <div className="grid gap-8 xl:grid-cols-[minmax(0,0.34fr)_minmax(0,0.66fr)] xl:items-start">
             <SectionHeading
               eyebrow={cvContent.highlightsSection.eyebrow}
@@ -255,7 +255,7 @@ export function HighlightsSection() {
               {cvContent.highlightsSection.items.map((item) => (
                 <article
                   key={item.title}
-                  className="rounded-[1.9rem] border border-white/10 bg-white/6 p-6"
+                  className="border border-white/10 bg-white/6 p-6"
                 >
                   <h3 className="text-xl font-semibold tracking-tight text-white">
                     {item.title}
@@ -313,13 +313,13 @@ export function KeyProjectsSection() {
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
-              className="surface-card rounded-[2.2rem] p-6 transition-colors hover:bg-white/85"
+              className="surface-card p-6 transition-colors hover:bg-white/85"
             >
               <div className="flex flex-wrap gap-2">
                 <span className="meta-chip">{project.client}</span>
                 <span className="meta-chip">{project.period}</span>
               </div>
-              <h3 className="mt-5 font-serif text-[2rem] leading-tight tracking-tight text-foreground">
+              <h3 className="mt-5 text-[2rem] font-semibold leading-tight tracking-tight text-foreground">
                 {project.title}
               </h3>
               <p className="mt-4 text-sm leading-7 text-muted sm:text-base">
@@ -348,7 +348,7 @@ export function EducationCertsSection() {
             {cvContent.educationSection.items.map((item) => (
               <article
                 key={item.title}
-                className="surface-card rounded-4xl p-6"
+                className="surface-card p-6"
               >
                 <h3 className="text-xl font-semibold tracking-tight text-foreground">
                   {item.title}
@@ -379,7 +379,7 @@ export function ToolsSection() {
           {cvContent.toolsSection.groups.map((group) => (
             <article
               key={group.title}
-              className="surface-card rounded-[2.15rem] p-6 sm:p-7"
+              className="surface-card p-6 sm:p-7"
             >
               <p className="eyebrow">{group.title}</p>
               <Tags items={group.items} className="mt-6" />
@@ -395,7 +395,7 @@ export function CvCtaSection() {
   return (
     <section className="section-shell py-16 sm:py-20">
       <Container>
-        <div className="surface-card-strong rounded-[2.8rem] px-6 py-8 sm:px-8 sm:py-10">
+        <div className="surface-card px-6 py-8 sm:px-8 sm:py-10">
           <div className="grid gap-8 xl:grid-cols-[minmax(0,0.62fr)_minmax(16rem,0.38fr)] xl:items-end">
             <SectionHeading
               eyebrow={cvContent.ctaSection.eyebrow}

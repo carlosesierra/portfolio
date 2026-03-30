@@ -17,16 +17,26 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm text-muted md:flex">
-          {brandContent.navigation.map((item) =>
-            item.href.startsWith("/#") ? (
-              <a
-                key={item.href}
-                href={item.href}
-                className="transition-colors hover:text-foreground"
-              >
-                {item.label}
-              </a>
-            ) : (
+          {brandContent.navigation.map((item) => {
+            const isHashLink = item.href.startsWith("/#");
+            const isExternal =
+              item.href.startsWith("http://") || item.href.startsWith("https://");
+
+            if (isHashLink || isExternal) {
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="transition-colors hover:text-foreground"
+                  rel={isExternal ? "noreferrer" : undefined}
+                  target={isExternal ? "_blank" : undefined}
+                >
+                  {item.label}
+                </a>
+              );
+            }
+
+            return (
               <Link
                 key={item.href}
                 href={item.href}
@@ -34,8 +44,8 @@ export function SiteHeader() {
               >
                 {item.label}
               </Link>
-            ),
-          )}
+            );
+          })}
         </nav>
 
         <Button

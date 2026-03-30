@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { ParallaxMedia } from "@/components/parallax-media";
 import type { Project, ProjectImage } from "@/data/projects";
@@ -92,9 +93,9 @@ function getFallbackGallery(project: Project): ProjectImage[] {
 function WindowDots() {
   return (
     <div className="flex items-center gap-2">
-      <span className="h-2.5 w-2.5 rounded-full bg-foreground/15" />
-      <span className="h-2.5 w-2.5 rounded-full bg-foreground/10" />
-      <span className="h-2.5 w-2.5 rounded-full bg-foreground/10" />
+      <span className="h-2.5 w-2.5 bg-foreground/15" />
+      <span className="h-2.5 w-2.5 bg-foreground/10" />
+      <span className="h-2.5 w-2.5 bg-foreground/10" />
     </div>
   );
 }
@@ -115,19 +116,19 @@ function ProjectFallbackVisual({
       <div
         role="img"
         aria-label={item.alt}
-        className={cn("relative h-full w-full overflow-hidden rounded-[1.4rem]", className)}
+        className={cn("relative h-full w-full overflow-hidden", className)}
         style={{ background: theme.background }}
       >
-        <div className="absolute inset-x-6 top-6 h-20 rounded-[1.35rem]" style={{ background: theme.accent }} />
+        <div className="absolute inset-x-6 top-6 h-20" style={{ background: theme.accent }} />
         <div
-          className="absolute left-1/2 top-1/2 flex h-[76%] w-[56%] -translate-x-1/2 -translate-y-1/2 flex-col rounded-[2.25rem] border bg-white/95 p-4 shadow-[0_18px_40px_-28px_rgba(31,28,23,0.3)]"
+          className="absolute left-1/2 top-1/2 flex h-[76%] w-[56%] -translate-x-1/2 -translate-y-1/2 flex-col border bg-white/95 p-4 shadow-[0_18px_40px_-28px_rgba(31,28,23,0.3)]"
           style={{ borderColor: theme.border }}
         >
-          <div className="mx-auto h-1.5 w-14 rounded-full bg-foreground/12" />
-          <div className="mt-4 rounded-[1.2rem] px-3 py-2 text-[0.64rem] font-semibold uppercase tracking-[0.18em]" style={{ background: theme.accent, color: theme.ink }}>
+          <div className="mx-auto h-1.5 w-14 bg-foreground/12" />
+          <div className="mt-4 px-3 py-2 text-[0.64rem] font-semibold uppercase tracking-[0.18em]" style={{ background: theme.accent, color: theme.ink }}>
             {project.focus[0] ?? project.client}
           </div>
-          <div className="mt-4 rounded-[1.2rem] border border-border bg-background/80 px-3 py-3">
+          <div className="mt-4 border border-border bg-background/80 px-3 py-3">
             <p className="text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-muted">
               {project.client}
             </p>
@@ -136,11 +137,11 @@ function ProjectFallbackVisual({
             </p>
           </div>
           <div className="mt-3 grid gap-2">
-            <div className="h-2 rounded-full bg-foreground/10" />
-            <div className="h-2 w-5/6 rounded-full bg-foreground/8" />
-            <div className="h-2 w-2/3 rounded-full bg-foreground/8" />
+            <div className="h-2 bg-foreground/10" />
+            <div className="h-2 w-5/6 bg-foreground/8" />
+            <div className="h-2 w-2/3 bg-foreground/8" />
           </div>
-          <div className="mt-auto rounded-full px-3 py-2 text-[0.64rem] font-semibold uppercase tracking-[0.18em]" style={{ background: theme.ink, color: "white" }}>
+          <div className="mt-auto px-3 py-2 text-[0.64rem] font-semibold uppercase tracking-[0.18em]" style={{ background: theme.ink, color: "white" }}>
             {project.focus[1] ?? project.stack[0] ?? "Frontend"}
           </div>
         </div>
@@ -153,14 +154,14 @@ function ProjectFallbackVisual({
       <div
         role="img"
         aria-label={item.alt}
-        className={cn("relative h-full w-full overflow-hidden rounded-[1.4rem] p-4 sm:p-5", className)}
+        className={cn("relative h-full w-full overflow-hidden p-4 sm:p-5", className)}
         style={{ background: theme.background }}
       >
         <div className="absolute inset-x-0 top-0 h-24 opacity-70" style={{ background: theme.accent }} />
         <div className="relative flex h-full flex-col">
           <WindowDots />
           <div className="mt-5 grid gap-3">
-            <div className="rounded-[1.35rem] border border-border bg-white/95 p-4">
+            <div className="border border-border bg-white/95 p-4">
               <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-muted">
                 {project.stack.slice(0, 2).join(" + ")}
               </p>
@@ -168,14 +169,14 @@ function ProjectFallbackVisual({
                 {primaryMetric?.value ?? project.title}
               </p>
               <div className="mt-4 grid gap-2">
-                <div className="h-2 rounded-full bg-foreground/10" />
-                <div className="h-2 w-11/12 rounded-full bg-foreground/8" />
-                <div className="h-2 w-4/5 rounded-full bg-foreground/8" />
+                <div className="h-2 bg-foreground/10" />
+                <div className="h-2 w-11/12 bg-foreground/8" />
+                <div className="h-2 w-4/5 bg-foreground/8" />
               </div>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {[secondaryMetric, tertiaryMetric].map((metric, index) => (
-                <div key={`${metric?.value ?? project.title}-${index}`} className="rounded-[1.2rem] border border-border bg-white/92 p-4">
+                <div key={`${metric?.value ?? project.title}-${index}`} className="border border-border bg-white/92 p-4">
                   <p className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-muted">
                     Detail
                   </p>
@@ -198,13 +199,13 @@ function ProjectFallbackVisual({
     <div
       role="img"
       aria-label={item.alt}
-      className={cn("relative h-full w-full overflow-hidden rounded-[1.4rem] p-4 sm:p-5", className)}
+      className={cn("relative h-full w-full overflow-hidden p-4 sm:p-5", className)}
       style={{ background: theme.background }}
     >
       <div className="relative flex h-full flex-col">
         <WindowDots />
         <div className={cn("mt-5 grid flex-1 gap-4", compact ? "grid-cols-[0.42fr_0.58fr]" : "grid-cols-[0.35fr_0.65fr]")}>
-          <div className="rounded-[1.35rem] border border-border bg-white/92 p-4">
+          <div className="border border-border bg-white/92 p-4">
             <p className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-muted">
               {project.client}
             </p>
@@ -213,7 +214,7 @@ function ProjectFallbackVisual({
             </p>
             <div className="mt-4 space-y-2">
               {project.focus.slice(0, 3).map((focusItem) => (
-                <div key={focusItem} className="rounded-full px-3 py-2 text-[0.64rem] font-semibold uppercase tracking-[0.18em]" style={{ background: theme.accent, color: theme.ink }}>
+                <div key={focusItem} className="px-3 py-2 text-[0.64rem] font-semibold uppercase tracking-[0.18em]" style={{ background: theme.accent, color: theme.ink }}>
                   {focusItem}
                 </div>
               ))}
@@ -221,7 +222,7 @@ function ProjectFallbackVisual({
           </div>
 
           <div className="grid gap-3">
-            <div className="rounded-[1.35rem] border border-border bg-white/95 p-4">
+            <div className="border border-border bg-white/95 p-4">
               <p className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-muted">
                 {project.summaryFocus ?? project.client}
               </p>
@@ -229,14 +230,14 @@ function ProjectFallbackVisual({
                 {primaryMetric?.value ?? project.title}
               </p>
               <div className="mt-4 grid gap-2">
-                <div className="h-2 rounded-full bg-foreground/10" />
-                <div className="h-2 w-11/12 rounded-full bg-foreground/8" />
-                <div className="h-2 w-4/5 rounded-full bg-foreground/8" />
+                <div className="h-2 bg-foreground/10" />
+                <div className="h-2 w-11/12 bg-foreground/8" />
+                <div className="h-2 w-4/5 bg-foreground/8" />
               </div>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {[secondaryMetric, tertiaryMetric].map((metric, index) => (
-                <div key={`${metric?.value ?? project.title}-${index}`} className="rounded-[1.2rem] border border-border bg-white/92 p-4">
+                <div key={`${metric?.value ?? project.title}-${index}`} className="border border-border bg-white/92 p-4">
                   <p className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-muted">
                     Metric
                   </p>
@@ -270,7 +271,7 @@ function ProjectMediaFigure({
     className,
   );
   const mediaClass = cn(
-    "corner-cut rounded-[1.5rem]",
+    "",
     item.frameClassName ?? getAspectClass(itemKind),
   );
   const parallaxStrength =
@@ -278,7 +279,7 @@ function ProjectMediaFigure({
 
   return (
     <figure className={wrapperClass}>
-      <div className="surface-card overflow-hidden rounded-[1.85rem] p-2.5">
+      <div className="surface-card overflow-hidden p-2.5">
         <ParallaxMedia className={mediaClass} strength={parallaxStrength}>
           {item.src ? (
             <Image
@@ -286,6 +287,8 @@ function ProjectMediaFigure({
               alt={item.alt}
               fill
               priority={priority}
+              loading={priority ? "eager" : "lazy"}
+              fetchPriority={priority ? "high" : undefined}
               sizes={
                 compact
                   ? "(max-width: 1024px) 100vw, 32vw"
@@ -327,39 +330,45 @@ export function ProjectCardVisual({
 
   return (
     <figure className="w-full">
-      <div className="surface-card overflow-hidden rounded-[1.85rem] p-2.5">
-        <ParallaxMedia
-          className={cn("corner-cut rounded-[1.5rem]", frameClassName)}
-          strength={strength}
-        >
-          {project.heroImage ? (
-            <Image
-              src={project.heroImage}
-              alt={`${project.title} project preview`}
-              width={1600}
-              height={1000}
-              loading={eagerImage ? "eager" : "lazy"}
-              fetchPriority={eagerImage ? "high" : undefined}
-              sizes={
-                isFeature
-                  ? "(max-width: 1279px) 100vw, 42rem"
-                  : "(max-width: 1024px) 100vw, 32vw"
-              }
-              className="h-full w-full object-cover object-top"
-            />
-          ) : (
-            <ProjectFallbackVisual
-              project={project}
-              item={{
-                alt: `${project.title} project preview`,
-                kind: "hero",
-              }}
-              compact={!isFeature}
-              className="h-full w-full"
-            />
-          )}
-        </ParallaxMedia>
-      </div>
+      <Link
+        href={`/projects/${project.slug}`}
+        className="block"
+        aria-label={`Read ${project.title} case study`}
+      >
+        <div className="surface-card overflow-hidden p-2.5">
+          <ParallaxMedia
+            className={frameClassName}
+            strength={strength}
+          >
+            {project.heroImage ? (
+              <Image
+                src={project.heroImage}
+                alt={`${project.title} project preview`}
+                width={1600}
+                height={1000}
+                loading={eagerImage ? "eager" : "lazy"}
+                fetchPriority={eagerImage ? "high" : undefined}
+                sizes={
+                  isFeature
+                    ? "(max-width: 1279px) 100vw, 42rem"
+                    : "(max-width: 1024px) 100vw, 32vw"
+                }
+                className="h-full w-full object-cover object-top"
+              />
+            ) : (
+              <ProjectFallbackVisual
+                project={project}
+                item={{
+                  alt: `${project.title} project preview`,
+                  kind: "hero",
+                }}
+                compact={!isFeature}
+                className="h-full w-full"
+              />
+            )}
+          </ParallaxMedia>
+        </div>
+      </Link>
     </figure>
   );
 }

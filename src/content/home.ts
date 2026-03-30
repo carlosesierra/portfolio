@@ -1,4 +1,5 @@
 import type {
+  LabelValueItem,
   LabeledTitleBodyItem,
   LinkCta,
   SectionIntro,
@@ -36,25 +37,10 @@ type HomeContent = {
     groups: readonly StackGroup[];
   };
   about: {
-    aside: {
-      eyebrow: string;
-      labels: {
-        location: string;
-        role: string;
-        specialties: string;
-        focusNow: string;
-      };
-      specialties: readonly string[];
-      focusNow: string;
+    intro: SectionIntro & {
+      paragraph: string;
     };
-    main: SectionIntro & {
-      paragraphs: readonly string[];
-    };
-    currentFocus: {
-      eyebrow: string;
-      body: string;
-      cta: LinkCta;
-    };
+    metadata: readonly LabelValueItem[];
   };
   contact: {
     eyebrow: string;
@@ -70,7 +56,7 @@ export const homeContent = {
     intro:
       "I build fast, accessible and production-ready interfaces with React, TypeScript and modern frontend workflows. My experience spans product websites, marketing platforms, reusable UI patterns, eDM systems and high-volume campaign delivery.",
     primaryCta: {
-      label: "View Projects",
+      label: "View Selected Projects",
       href: "#projects",
     },
     secondaryCta: {
@@ -82,14 +68,14 @@ export const homeContent = {
       value: "3",
       body: "Case studies with context, implementation and outcome.",
       supporting:
-        "React, Next.js, TypeScript, structured UI systems and recruiter-readable presentation.",
+        "React, Next.js, TypeScript and structured UI systems.",
     },
   },
   featured: {
     eyebrow: "Featured work",
-    title: "Frontend structure, delivery quality and practical outcomes.",
+    title: "Frontend structure, delivery quality  practical outcomes.",
     copy:
-      "The case studies below focus on the decisions, implementation details and delivery outcomes behind the work, not just the finished screens.",
+      "The case studies below focus on the decisions, implementation details and delivery outcomes behind the work.",
   },
   whatIBring: {
     eyebrow: "What I bring",
@@ -148,7 +134,7 @@ export const homeContent = {
     aside: {
       eyebrow: "Full CV",
       title:
-        "An overview of my frontend experience, core skills and selected project references.",
+        "Frontend experience, core skills and selected project references.",
       includesLabel: "Includes",
       includesBody:
         "Selected experience, project references and tooling across frontend engineering, digital production and delivery-focused work.",
@@ -160,9 +146,7 @@ export const homeContent = {
   },
   tooling: {
     eyebrow: "Tooling",
-    title: "Tools and environments I use.",
-    copy:
-      "These are the environments I work in most often across implementation, UI systems and production delivery.",
+    title: "Tools and technologies",
     groups: [
       {
         title: "Frontend",
@@ -198,41 +182,24 @@ export const homeContent = {
     ],
   },
   about: {
-    aside: {
+    intro: {
       eyebrow: "About",
-      labels: {
-        location: "Location",
-        role: "Role",
-        specialties: "Specialties",
-        focusNow: "Focus now",
-      },
-      specialties: ["React", "Next.js", "TypeScript", "UI Systems"],
-      focusNow:
-        "Frontend roles where thoughtful interface implementation and structured delivery matter equally.",
+      title: "Melbourne-based Front-End Engineer.",
+      paragraph:
+        "I’m a Melbourne-based Front-End Engineer with experience across websites, digital production and marketing-tech delivery. I enjoy building interfaces that are clear, well-structured and reliable in real production environments, and I’m currently focused on roles where thoughtful UI implementation, modern engineering workflows and product-facing collaboration come together.",
     },
-    main: {
-      eyebrow: "About",
-      title: "A short introduction to how I approach frontend engineering.",
-      paragraphs: [
-        "I'm a Melbourne-based Front-End Engineer with a background across websites, digital production and marketing-tech delivery. Over time, I've developed a strong interest in the systems behind good interface work - how components are structured, how content is presented clearly and how delivery stays reliable under real production constraints.",
-        "I’m now focused on frontend roles where thoughtful UI implementation, modern engineering workflows and product-facing collaboration come together.",
-      ],
-    },
-    currentFocus: {
-      eyebrow: "Current focus",
-      body:
-        "Roles that value clean UI, maintainable frontend systems and a polished but pragmatic approach to delivery.",
-      cta: {
-        label: "View Full CV",
-        href: "/cv",
-      },
-    },
+    metadata: [
+      { label: "Location", value: "Melbourne, Australia" },
+      { label: "Focus", value: "Front-End Engineering" },
+      { label: "Stack", value: "React, Next.js, TypeScript" },
+      { label: "Open to", value: "Frontend roles" },
+    ],
   },
   contact: {
     eyebrow: "Next step",
-    title: "Open to frontend roles where thoughtful UI and structured delivery matter.",
+    title: "Open to frontend roles where clear UI and dependable delivery matter.",
     body:
-      "I'm looking for frontend roles where clear UI, strong implementation and dependable delivery all matter.",
+      "I’m looking for opportunities where thoughtful implementation, strong collaboration and modern frontend workflows all play a meaningful role.",
     primaryCta: {
       label: "View CV",
       href: "/cv",

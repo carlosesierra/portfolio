@@ -46,7 +46,7 @@ function SectionHeading({
     >
       {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
 
-      <h2 className="mt-4 font-serif text-4xl leading-[0.98] tracking-tight text-foreground sm:text-5xl lg:text-[3.7rem]">
+      <h2 className="mt-4 text-foreground">
         {title}
       </h2>
 
@@ -77,12 +77,12 @@ function HeroPreviewCard({
   return (
     <article
       className={cn(
-        "surface-card h-full rounded-[1.75rem] p-2.5 lg:aspect-square",
+        "surface-card h-full p-2.5 lg:aspect-square",
         className,
       )}
     >
       <Link href={`/projects/${project.slug}`} className="block h-full">
-        <div className="corner-cut relative h-full min-h-68 overflow-hidden rounded-[1.35rem] sm:min-h-72 lg:min-h-0">
+        <div className="relative h-full min-h-68 overflow-hidden sm:min-h-72 lg:min-h-0">
           <ParallaxMedia className="h-full" strength={22}>
             {project.heroImage ? (
               <Image
@@ -124,7 +124,7 @@ export function HeroSection() {
           <div className="max-w-4xl">
             <p className="eyebrow mt-8">{brandContent.location}</p>
 
-            <h1 className="mt-4 max-w-4xl font-serif text-[3.2rem] leading-[0.92] tracking-tight text-foreground sm:text-[4.8rem] lg:text-[6.2rem]">
+            <h1 className="mt-4 max-w-4xl text-[3.2rem] leading-[0.92] tracking-tight text-foreground sm:text-[4.8rem] lg:text-[6.2rem]">
               {brandContent.name}
             </h1>
 
@@ -147,11 +147,11 @@ export function HeroSection() {
           </div>
 
           <div className="mt-10 grid gap-4 lg:mt-12 lg:grid-cols-4">
-            <div className="surface-card flex h-full flex-col rounded-4xl p-5 sm:p-6 lg:aspect-square">
+            <div className="surface-card flex h-full flex-col p-5 sm:p-6 lg:aspect-square">
               <p className="eyebrow">{homeContent.hero.atGlance.eyebrow}</p>
               <div className="mt-5 flex flex-1 flex-col gap-5">
                 <div>
-                  <p className="font-serif text-3xl leading-none tracking-tight text-foreground">
+                  <p className="text-3xl font-semibold leading-none tracking-tight text-foreground">
                     {homeContent.hero.atGlance.value}
                   </p>
                   <p className="mt-2 text-sm leading-6 text-muted">
@@ -159,7 +159,7 @@ export function HeroSection() {
                   </p>
                 </div>
 
-                <div className="mt-auto">
+                <div>
                   <div className="soft-divider" />
                   <p className="pt-4 text-sm leading-6 text-muted">
                     {homeContent.hero.atGlance.supporting}
@@ -218,10 +218,10 @@ export function ValuePropsSection() {
             {homeContent.whatIBring.items.map((item, index) => (
               <article
                 key={item.title}
-                className="surface-card rounded-4xl p-6 sm:p-7"
+                className="surface-card p-6 sm:p-7"
               >
                 <div className="grid gap-4 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start">
-                  <p className="font-serif text-4xl leading-none tracking-tight text-foreground/25 sm:text-5xl">
+                  <p className="text-4xl font-semibold leading-none tracking-tight text-foreground/25 sm:text-5xl">
                     {String(index + 1).padStart(2, "0")}
                   </p>
                   <div>
@@ -258,7 +258,7 @@ export function ExperienceSnapshotSection() {
               {homeContent.experienceSnapshot.items.map((item) => (
                 <article
                   key={item.title}
-                  className="surface-card rounded-[1.9rem] px-5 py-5 sm:px-6"
+                  className="surface-card px-5 py-5 sm:px-6"
                 >
                   <div className="grid gap-4 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start">
                     <span className="editorial-dot mt-2 hidden sm:block" />
@@ -277,16 +277,16 @@ export function ExperienceSnapshotSection() {
             </div>
           </div>
 
-          <aside className="surface-card-dark rounded-[2.4rem] px-6 py-7 sm:px-7 sm:py-8">
+          <aside className="surface-card-dark px-6 py-7 sm:px-7 sm:py-8">
             <p className="eyebrow text-white/55">
               {homeContent.experienceSnapshot.aside.eyebrow}
             </p>
-            <h3 className="mt-4 font-serif text-3xl leading-tight tracking-tight text-white sm:text-[2.5rem]">
+            <h3 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-white sm:text-[2.5rem]">
               {homeContent.experienceSnapshot.aside.title}
             </h3>
 
             <div className="mt-8 space-y-3">
-              <div className="rounded-[1.6rem] border border-white/10 bg-white/6 p-4">
+              <div className="border border-white/10 bg-white/6 p-4">
                 <p className="eyebrow text-white/45">
                   {homeContent.experienceSnapshot.aside.includesLabel}
                 </p>
@@ -310,22 +310,21 @@ export function ExperienceSnapshotSection() {
 
 export function TechStackSection() {
   return (
-    <section className="section-shell py-16 sm:py-24">
+    <section className="section-shell py-14 sm:py-18">
       <Container>
         <SectionHeading
           eyebrow={homeContent.tooling.eyebrow}
           title={homeContent.tooling.title}
-          copy={homeContent.tooling.copy}
         />
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 lg:grid-cols-3">
           {homeContent.tooling.groups.map((group) => (
             <article
               key={group.title}
-              className="surface-card rounded-[2.15rem] p-6 sm:p-7"
+              className="surface-card p-5 sm:p-6"
             >
               <p className="eyebrow">{group.title}</p>
-              <Tags items={group.items} className="mt-5" />
+              <Tags items={group.items} className="mt-4 gap-2" />
             </article>
           ))}
         </div>
@@ -336,78 +335,34 @@ export function TechStackSection() {
 
 export function AboutPreviewSection() {
   return (
-    <section id="about" className="section-shell py-16 sm:py-24">
+    <section id="about" className="section-shell py-14 sm:py-18">
       <Container>
-        <div className="grid gap-6 xl:grid-cols-[minmax(16rem,0.36fr)_minmax(0,0.64fr)] xl:items-start">
-          <aside className="surface-card-dark rounded-[2.5rem] px-6 py-7 sm:px-7 sm:py-8">
-            <p className="eyebrow text-white/55">{homeContent.about.aside.eyebrow}</p>
-            <h2 className="mt-4 font-serif text-4xl leading-[0.98] tracking-tight text-white sm:text-5xl">
-              {brandContent.name}
-            </h2>
+        <div className="surface-card p-7 sm:p-8 lg:p-10">
+          <div className="grid gap-8 xl:grid-cols-[minmax(0,0.62fr)_minmax(18rem,0.38fr)] xl:items-start">
+            <div>
+              <SectionHeading
+                eyebrow={homeContent.about.intro.eyebrow}
+                title={homeContent.about.intro.title}
+                className="max-w-none"
+              />
 
-            <dl className="mt-8 space-y-5">
-              <div>
-                <dt className="eyebrow text-white/45">
-                  {homeContent.about.aside.labels.location}
-                </dt>
-                <dd className="mt-2 text-base text-white/82">{brandContent.location}</dd>
-              </div>
-              <div>
-                <dt className="eyebrow text-white/45">
-                  {homeContent.about.aside.labels.role}
-                </dt>
-                <dd className="mt-2 text-base text-white/82">{brandContent.role}</dd>
-              </div>
-              <div>
-                <dt className="eyebrow text-white/45">
-                  {homeContent.about.aside.labels.specialties}
-                </dt>
-                <dd className="mt-3">
-                  <Tags
-                    items={homeContent.about.aside.specialties}
-                    className="[&>span]:border-white/10 [&>span]:bg-white/8 [&>span]:text-white/70"
-                  />
-                </dd>
-              </div>
-              <div>
-                <dt className="eyebrow text-white/45">
-                  {homeContent.about.aside.labels.focusNow}
-                </dt>
-                <dd className="mt-3 text-sm leading-7 text-white/72 sm:text-base">
-                  {homeContent.about.aside.focusNow}
-                </dd>
-              </div>
-            </dl>
-          </aside>
-
-          <div className="surface-card rounded-[2.5rem] p-7 sm:p-8 lg:p-10">
-            <SectionHeading
-              eyebrow={homeContent.about.main.eyebrow}
-              title={homeContent.about.main.title}
-              className="max-w-none"
-            />
-
-            <div className="mt-8 space-y-5 text-base leading-8 text-muted sm:text-lg">
-              {homeContent.about.main.paragraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
+              <p className="mt-8 max-w-3xl text-base leading-8 text-muted sm:text-lg">
+                {homeContent.about.intro.paragraph}
+              </p>
             </div>
 
-            <div className="mt-8 grid gap-4 lg:grid-cols-[minmax(0,0.62fr)_minmax(12rem,0.38fr)] lg:items-end">
-              <div className="corner-cut rounded-[1.8rem] bg-accent-soft/62 p-5">
-                <p className="eyebrow">{homeContent.about.currentFocus.eyebrow}</p>
-                <p className="mt-3 text-sm leading-7 text-foreground sm:text-base">
-                  {homeContent.about.currentFocus.body}
-                </p>
-              </div>
-
-              <Button
-                href={homeContent.about.currentFocus.cta.href}
-                variant="secondary"
-                className="justify-center"
-              >
-                {homeContent.about.currentFocus.cta.label}
-              </Button>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {homeContent.about.metadata.map((item) => (
+                <div
+                  key={item.label}
+                  className="border border-border bg-accent-soft/44 px-4 py-4"
+                >
+                  <p className="eyebrow">{item.label}</p>
+                  <p className="mt-2 text-sm leading-6 text-foreground sm:text-base">
+                    {item.value}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -420,11 +375,11 @@ export function ContactCtaSection() {
   return (
     <section id="contact" className="section-shell py-16 sm:py-24">
       <Container>
-        <div className="surface-card-strong rounded-[2.8rem] px-6 py-8 sm:px-8 sm:py-10">
+        <div className="surface-card px-6 py-8 sm:px-8 sm:py-10">
           <div className="grid gap-8 xl:grid-cols-[minmax(0,0.62fr)_minmax(16rem,0.38fr)] xl:items-end">
             <div className="max-w-3xl">
               <p className="eyebrow">{homeContent.contact.eyebrow}</p>
-              <h2 className="mt-4 font-serif text-4xl leading-[0.98] tracking-tight text-foreground sm:text-5xl lg:text-[3.8rem]">
+              <h2 className="mt-4 text-foreground">
                 {homeContent.contact.title}
               </h2>
               <p className="section-copy mt-5 max-w-2xl text-base leading-7 sm:text-lg sm:leading-8">

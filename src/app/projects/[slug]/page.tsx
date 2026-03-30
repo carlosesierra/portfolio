@@ -5,7 +5,6 @@ import {
   ProjectChallengesSolutionsSection,
   ProjectChallengeSection,
   ProjectHero,
-  ProjectNextStepsSection,
   ProjectOutcomeSection,
   ProjectOverviewSection,
   ProjectPager,
@@ -64,7 +63,6 @@ export default async function ProjectPage({ params }: PageProps) {
       <ProjectTechImplementationSection project={project} />
       <ProjectChallengesSolutionsSection project={project} />
       <ProjectOutcomeSection project={project} />
-      <ProjectNextStepsSection project={project} />
       <ProjectPager currentSlug={project.slug} />
     </>
   );

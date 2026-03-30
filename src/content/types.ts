@@ -23,6 +23,11 @@ export type LabeledTitleBodyItem = TitleBodyItem & {
   eyebrow: string;
 };
 
+export type LabelValueItem = {
+  label: string;
+  value: string;
+};
+
 export type StackGroup = {
   title: string;
   body?: string;

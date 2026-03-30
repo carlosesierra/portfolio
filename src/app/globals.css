@@ -1,19 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #e6e1db;
-  --surface: rgba(244, 240, 235, 0.78);
-  --surface-strong: rgba(250, 247, 243, 0.92);
-  --foreground: #4c4c4c;
-  --muted: #4c4c4c;
-  --border: rgba(70, 63, 58, 0.12);
-
-  --accent: #d4e4f1;
-  --accent-strong: #f5ebc8;
+  --background: #fff;
+  --surface: #efefef;
+  --surface-strong:#fff;
+  --foreground: #333;
+  --muted: #333;
+  --border: #efefef;
+  --accent: #e5d08e;
+  --accent-strong: #b7d1ea;
   --accent-soft: #d4e4f1;
-
-  --shadow-color: rgba(70, 63, 58, 0.16);
-
+  --shadow-color: #666;
   --font-sans: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
   --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
   --font-mono: "SFMono-Regular", "SF Mono", "Consolas", monospace;
@@ -46,16 +43,64 @@ html {
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top left, rgba(214, 228, 241, 0.95), transparent 32rem),
-    radial-gradient(circle at 88% 10%, rgba(245, 235, 200, 0.88), transparent 28rem),
-    linear-gradient(180deg, #f7f4ee 0%, #f1eee8 48%, #ebe7de 100%);
   color: var(--foreground);
+  background: linear-gradient(300deg,#fffcd8,#f7c5c5,#9fe9fc);
+  background-size: 180% 180%;
+  animation: gradient-animation 5s ease infinite;
+}
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body,
+button,
+input,
+select,
+textarea {
   font-family: var(--font-sans);
 }
 
+h1, h2, h3  {
+  font-family: var(--font-display);
+  line-height: 1.1;
+}
+h1{
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+h3 {
+  font-size: 1.75rem;
+}
 a {
   color: inherit;
+}
+
+[data-button] {
+  text-decoration: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+[data-button]:focus {
+  outline: none;
+}
+
+[data-button]:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--accent) 30%, transparent),
+    0 0 0 5px color-mix(in srgb, white 82%, transparent);
 }
 
 ::selection {
@@ -70,18 +115,6 @@ a {
     0 30px 70px -44px var(--shadow-color),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(22px);
-  border-bottom-left-radius: 0;
-}
-
-.surface-card-strong {
-  border: 1px solid var(--border);
-  background:
-    linear-gradient(180deg, rgba(255, 254, 251, 0.96) 0%, rgba(255, 251, 247, 0.86) 100%);
-  box-shadow:
-    0 30px 80px -46px var(--shadow-color),
-    inset 0 1px 0 rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(22px);
-  border-bottom-left-radius: 0;
 }
 
 .surface-card-dark {
@@ -90,11 +123,6 @@ a {
     linear-gradient(180deg, rgba(30, 39, 54, 0.94) 0%, rgba(23, 31, 44, 0.98) 100%);
   box-shadow: 0 36px 80px -48px rgba(17, 24, 34, 0.72);
   color: #f5f1eb;
-  border-bottom-left-radius: 0;
-}
-
-.corner-cut {
-  border-bottom-left-radius: 0 !important;
 }
 
 .eyebrow {
@@ -134,7 +162,6 @@ a {
   border: 1px solid rgba(61, 47, 32, 0.08);
   background: rgba(255, 255, 255, 0.72);
   padding: 0.55rem 0.9rem;
-  border-radius: 999px;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -173,7 +200,6 @@ a {
   inset: auto auto 12% -12%;
   width: 18rem;
   height: 18rem;
-  border-radius: 999px;
   background: rgba(219, 231, 240, 0.85);
   filter: blur(26px);
 }
@@ -185,7 +211,6 @@ a {
   top: -3rem;
   width: 16rem;
   height: 16rem;
-  border-radius: 999px;
   background: rgba(245, 235, 200, 0.75);
   filter: blur(24px);
 }
@@ -210,7 +235,6 @@ a {
 .editorial-dot {
   width: 0.45rem;
   height: 0.45rem;
-  border-radius: 999px;
   background: rgba(35, 51, 71, 0.72);
 }
 

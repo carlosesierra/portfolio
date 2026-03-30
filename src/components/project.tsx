@@ -41,7 +41,7 @@ function SectionHeading({
 
       <h2
         className={cn(
-          "mt-4 font-serif text-4xl leading-[0.98] tracking-tight sm:text-5xl",
+          "mt-4",
           invert ? "text-white" : "text-foreground",
         )}
       >
@@ -74,7 +74,7 @@ function Tags({ items, className }: TagsProps) {
 
 function MetaItem({ label, value }: MetaItemProps) {
   return (
-    <div className="surface-card rounded-[1.7rem] px-5 py-5">
+    <div className="surface-card px-5 py-5">
       <p className="eyebrow">{label}</p>
       <p className="mt-3 text-sm leading-6 text-foreground sm:text-base">{value}</p>
     </div>
@@ -95,7 +95,7 @@ function InsightCard({
   return (
     <article
       className={cn(
-        "rounded-[1.9rem] p-6",
+        "p-6",
         invert
           ? "border border-white/10 bg-white/6"
           : "surface-card",
@@ -104,7 +104,7 @@ function InsightCard({
       {typeof index === "number" ? (
         <p
           className={cn(
-            "font-serif text-4xl leading-none tracking-tight",
+            "text-4xl font-semibold leading-none tracking-tight",
             invert ? "text-white/24" : "text-foreground/20",
           )}
         >
@@ -136,25 +136,27 @@ function NarrativePanel({
   title,
   body,
   highlight,
+  bodyClassName,
   invert = false,
 }: {
   eyebrow: string;
   title: string;
   body: string;
   highlight?: string;
+  bodyClassName?: string;
   invert?: boolean;
 }) {
   return (
     <article
       className={cn(
-        "rounded-[2.35rem] p-7 sm:p-8",
+        "p-7 sm:p-8",
         invert ? "surface-card-dark" : "surface-card",
       )}
     >
       <p className={cn("eyebrow", invert && "text-white/55")}>{eyebrow}</p>
       <h3
         className={cn(
-          "mt-4 font-serif text-3xl leading-tight tracking-tight sm:text-4xl",
+          "mt-4 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl",
           invert ? "text-white" : "text-foreground",
         )}
       >
@@ -162,7 +164,8 @@ function NarrativePanel({
       </h3>
       <p
         className={cn(
-          "mt-5 max-w-[46ch] text-base leading-8 sm:text-lg",
+          "mt-5 text-base leading-8 sm:text-lg",
+          bodyClassName ?? "max-w-[46ch]",
           invert ? "text-white/74" : "text-muted",
         )}
       >
@@ -171,7 +174,7 @@ function NarrativePanel({
       {highlight ? (
         <div
           className={cn(
-            "corner-cut mt-7 rounded-[1.8rem] px-5 py-5",
+            "mt-7 px-5 py-5",
             invert
               ? "border border-white/10 bg-white/7"
               : "bg-accent-soft/72",
@@ -198,16 +201,16 @@ export function ProjectHero({ project }: { project: Project }) {
   return (
     <section className="pb-8 pt-8 sm:pb-12 sm:pt-12">
       <Container>
-        <div className="surface-card-strong rounded-[2.85rem] p-4 sm:p-5 lg:p-6">
+        <div className="surface-card p-4 sm:p-5 lg:p-6">
           <div className="grid gap-5 xl:grid-cols-[minmax(0,0.54fr)_minmax(0,0.46fr)] xl:items-stretch">
-            <div className="rounded-[2.2rem] bg-white/62 p-6 sm:p-8 lg:p-10">
+            <div className="bg-white/62 p-6 sm:p-8 lg:p-10">
               <div className="flex flex-wrap gap-2">
                 <span className="meta-chip">Case study</span>
                 <span className="meta-chip">{project.client}</span>
                 <span className="meta-chip">{project.period}</span>
               </div>
 
-              <h1 className="mt-6 font-serif text-[3rem] leading-[0.94] tracking-tight text-foreground sm:text-5xl lg:text-[4.2rem]">
+              <h1 className="mt-6 text-[3rem] leading-[0.94] tracking-tight text-foreground sm:text-5xl lg:text-[4.2rem]">
                 {project.title}
               </h1>
 
@@ -231,9 +234,9 @@ export function ProjectHero({ project }: { project: Project }) {
 
             <div className="space-y-4">
               {project.heroImage ? (
-                <div className="surface-card overflow-hidden rounded-[2.2rem] p-2.5">
+                <div className="surface-card overflow-hidden p-2.5">
                   <ParallaxMedia
-                    className="corner-cut h-[20rem] rounded-[1.8rem] sm:h-[26rem] lg:h-[31rem]"
+                    className="h-[20rem] sm:h-[26rem] lg:h-[31rem]"
                     strength={34}
                   >
                     <Image
@@ -241,6 +244,8 @@ export function ProjectHero({ project }: { project: Project }) {
                       alt={`${project.title} hero preview`}
                       fill
                       priority
+                      loading="eager"
+                      fetchPriority="high"
                       sizes="(max-width: 1279px) 100vw, 42vw"
                       className="object-cover object-top"
                     />
@@ -252,9 +257,9 @@ export function ProjectHero({ project }: { project: Project }) {
                 {project.metrics.map((metric) => (
                   <article
                     key={metric.label}
-                    className="corner-cut rounded-[1.65rem] border border-border bg-white/68 px-5 py-5"
+                    className="border border-border bg-white/68 px-5 py-5"
                   >
-                    <p className="font-serif text-[1.45rem] leading-tight tracking-tight text-foreground sm:text-[1.6rem]">
+                    <p className="text-[1.45rem] font-semibold leading-tight tracking-tight text-foreground sm:text-[1.6rem]">
                       {metric.value}
                     </p>
                     <p className="mt-2.5 text-sm leading-6 text-muted">
@@ -297,7 +302,7 @@ export function ProjectVisualShowcase({ project }: { project: Project }) {
           <div>
             <SectionHeading
               eyebrow="Showcase"
-              title="Visual proof of the interface and the delivery priorities behind it."
+              title="Visuals and the delivery priorities."
               copy={
                 project.showcaseIntro ??
                 "The visuals below are there to support the story of the work, not to decorate it."
@@ -308,7 +313,7 @@ export function ProjectVisualShowcase({ project }: { project: Project }) {
           </div>
 
           <aside className="space-y-5 xl:sticky xl:top-32">
-            <div className="surface-card-dark rounded-[2.2rem] px-6 py-7">
+            <div className="surface-card-dark px-6 py-7">
               <p className="eyebrow text-white/55">Focus areas</p>
               <Tags
                 items={project.showcaseFocus ?? project.focus}
@@ -319,7 +324,7 @@ export function ProjectVisualShowcase({ project }: { project: Project }) {
                 {project.metrics.map((metric) => (
                   <div
                     key={metric.label}
-                    className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4"
+                    className="border border-white/10 bg-white/7 p-4"
                   >
                     <p className="text-lg font-semibold tracking-tight text-white">
                       {metric.value}
@@ -332,7 +337,7 @@ export function ProjectVisualShowcase({ project }: { project: Project }) {
               </div>
             </div>
 
-            <div className="surface-card rounded-[2.2rem] p-6">
+            <div className="surface-card p-6">
               <p className="eyebrow">Outcome direction</p>
               <p className="mt-4 text-base leading-8 text-foreground">
                 {project.outcome}
@@ -356,6 +361,7 @@ export function ProjectOverviewSection({ project }: { project: Project }) {
           title="Project context"
           body={project.overview}
           highlight={project.referenceSummary ?? project.summary}
+          bodyClassName="max-w-[62ch] lg:max-w-[66%]"
         />
       </Container>
     </section>
@@ -371,6 +377,7 @@ export function ProjectChallengeSection({ project }: { project: Project }) {
           title="The main problem to solve"
           body={project.challenge}
           highlight={project.showcaseIntro}
+          bodyClassName="max-w-[62ch] lg:max-w-[66%]"
           invert
         />
       </Container>
@@ -382,20 +389,30 @@ export function ProjectRoleSection({ project }: { project: Project }) {
   return (
     <section className="section-shell py-12 sm:py-16">
       <Container>
-        <div className="grid gap-10 xl:grid-cols-[minmax(0,0.38fr)_minmax(0,0.62fr)] xl:items-start">
+        <div className="grid gap-10 xl:grid-cols-[minmax(0,0.44fr)_minmax(0,0.56fr)] xl:items-start">
           <SectionHeading
             eyebrow="Role"
-            title="Where my contribution sat in the delivery."
-            copy="This list stays specific on purpose. It shows what I directly shaped rather than padding the case study with vague ownership."
+            title="My contribution to the delivery."
+            copy="What I directly shaped in the case study."
           />
 
           <div className="grid gap-4 sm:grid-cols-2">
             {project.responsibilities.map((item, index) => (
-              <InsightCard
+              <article
                 key={item}
-                title={`Contribution ${index + 1}`}
-                body={item}
-              />
+                className="surface-card p-6 sm:p-7"
+              >
+                <div className="grid gap-4 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start">
+                  <p className="text-4xl font-semibold leading-none tracking-tight text-foreground/25 sm:text-5xl">
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <div>
+                    <p className="text-sm leading-7 text-muted sm:text-base">
+                      {item}
+                    </p>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         </div>
@@ -408,12 +425,12 @@ export function ProjectApproachSection({ project }: { project: Project }) {
   return (
     <section className="section-shell py-12 sm:py-16">
       <Container>
-        <div className="surface-card-dark rounded-[2.7rem] px-6 py-8 sm:px-8 sm:py-10">
+        <div className="surface-card-dark px-6 py-8 sm:px-8 sm:py-10">
           <div className="grid gap-8 xl:grid-cols-[minmax(0,0.36fr)_minmax(0,0.64fr)]">
             <SectionHeading
               eyebrow="Approach"
               title="How the work was structured"
-              copy="These were the delivery principles that shaped the implementation and helped keep the work practical in production."
+              copy="Delivery principles that shaped the implementation and helped keep the work practical in production."
               invert
             />
 
@@ -442,18 +459,17 @@ export function ProjectUxDecisionsSection({ project }: { project: Project }) {
         <div className="grid gap-10 xl:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] xl:items-start">
           <SectionHeading
             eyebrow="UX decisions"
-            title="Interface decisions that supported clarity, usability and trust."
-            copy="This section focuses on design-aware implementation choices rather than generic UI praise."
+            title="Clarity, usability and trust."
+            copy="Design-aware implementation choices rather than generic UI praise."
           />
 
           <div className="grid gap-4 sm:grid-cols-2">
             {project.uxDecisions.map((item) => (
               <article
                 key={item.title}
-                className="surface-card rounded-[1.95rem] p-6"
+                className="surface-card p-6"
               >
-                <p className="eyebrow">Decision</p>
-                <h3 className="mt-4 text-xl font-semibold tracking-tight text-foreground">
+                <h3 className="text-xl font-semibold tracking-tight text-foreground">
                   {item.title}
                 </h3>
                 <p className="mt-4 text-sm leading-7 text-muted sm:text-base">
@@ -483,7 +499,7 @@ export function ProjectTechImplementationSection({
             body={project.technicalImplementation}
           />
 
-          <article className="surface-card rounded-[2.35rem] p-7 sm:p-8">
+          <article className="surface-card p-7 sm:p-8">
             <p className="eyebrow">Stack in context</p>
             <p className="mt-4 text-base leading-8 text-foreground">
               The technical layer was kept aligned with the delivery goal: make the
@@ -516,7 +532,7 @@ export function ProjectChallengesSolutionsSection({
             {project.challengesSolutions.map((item) => (
               <article
                 key={item.challenge}
-                className="surface-card rounded-[2rem] p-6"
+                className="surface-card p-6"
               >
                 <div className="grid gap-5 lg:grid-cols-2">
                   <div>
@@ -558,7 +574,7 @@ export function ProjectOutcomeSection({ project }: { project: Project }) {
             {project.outcomePoints.map((item) => (
               <article
                 key={item}
-                className="surface-card rounded-[1.85rem] px-5 py-5"
+                className="surface-card px-5 py-5"
               >
                 <p className="text-sm leading-7 text-foreground sm:text-base">
                   {item}
@@ -576,7 +592,7 @@ export function ProjectNextStepsSection({ project }: { project: Project }) {
   return (
     <section className="section-shell py-12 sm:py-16">
       <Container>
-        <div className="surface-card rounded-[2.6rem] px-6 py-8 sm:px-8 sm:py-10">
+        <div className="surface-card px-6 py-8 sm:px-8 sm:py-10">
           <div className="grid gap-8 xl:grid-cols-[minmax(0,0.56fr)_minmax(16rem,0.44fr)] xl:items-end">
             <SectionHeading
               eyebrow="Next steps"
@@ -585,7 +601,7 @@ export function ProjectNextStepsSection({ project }: { project: Project }) {
             />
 
             <div className="space-y-4">
-              <div className="corner-cut rounded-[1.85rem] bg-accent-soft/68 p-6">
+              <div className="bg-accent-soft/68 p-6">
                 <p className="eyebrow">Forward-looking note</p>
                 <p className="mt-3 text-sm leading-7 text-foreground sm:text-base">
                   Future iteration would build on the same principle used throughout
@@ -624,10 +640,10 @@ export function ProjectPager({ currentSlug }: { currentSlug: string }) {
         <div className="grid gap-5 md:grid-cols-2">
           <Link
             href={`/projects/${previousProject.slug}`}
-            className="surface-card rounded-[2.1rem] px-6 py-6 transition-colors hover:bg-white/85"
+            className="surface-card px-6 py-6 transition-colors hover:bg-white/85"
           >
             <p className="eyebrow">Previous project</p>
-            <p className="mt-4 font-serif text-3xl leading-tight tracking-tight text-foreground">
+            <p className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-foreground">
               {previousProject.title}
             </p>
             <p className="mt-3 text-sm leading-7 text-muted">
@@ -637,10 +653,10 @@ export function ProjectPager({ currentSlug }: { currentSlug: string }) {
 
           <Link
             href={`/projects/${nextProject.slug}`}
-            className="surface-card rounded-[2.1rem] px-6 py-6 transition-colors hover:bg-white/85"
+            className="surface-card px-6 py-6 transition-colors hover:bg-white/85"
           >
             <p className="eyebrow">Next project</p>
-            <p className="mt-4 font-serif text-3xl leading-tight tracking-tight text-foreground">
+            <p className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-foreground">
               {nextProject.title}
             </p>
             <p className="mt-3 text-sm leading-7 text-muted">{nextProject.client}</p>
