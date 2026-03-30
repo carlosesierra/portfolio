@@ -15,6 +15,7 @@ import {
   ProjectVisualShowcase,
 } from "@/components/project";
 import { getProjectBySlug, projects } from "@/data/projects";
+import { getProjectJsonLd, serializeJsonLd } from "@/lib/structured-data";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -37,8 +38,22 @@ export async function generateMetadata({
   }
 
   return {
+    alternates: {
+      canonical: `/projects/${project.slug}`,
+    },
     title: project.title,
     description: project.summary,
+    openGraph: {
+      description: project.summary,
+      title: `${project.title} | Carlos Sierra`,
+      type: "website",
+      url: `/projects/${project.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      description: project.summary,
+      title: `${project.title} | Carlos Sierra`,
+    },
   };
 }
 
@@ -50,8 +65,14 @@ export default async function ProjectPage({ params }: PageProps) {
     notFound();
   }
 
+  const jsonLd = serializeJsonLd(getProjectJsonLd(project));
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd }}
+      />
       <ProjectHero project={project} />
       <ProjectSummaryBar project={project} />
       <ProjectVisualShowcase project={project} />

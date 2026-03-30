@@ -179,6 +179,15 @@ export function CvHero() {
                 <Button href={cvContent.hero.secondaryCta.href} variant="secondary">
                   {cvContent.hero.secondaryCta.label}
                 </Button>
+                {cvContent.hero.tertiaryCta ? (
+                  <Button
+                    href={cvContent.hero.tertiaryCta.href}
+                    variant="secondary"
+                    newTab
+                  >
+                    {cvContent.hero.tertiaryCta.label}
+                  </Button>
+                ) : null}
               </div>
             </div>
           </div>
@@ -410,6 +419,15 @@ export function CvCtaSection() {
               <Button href={cvContent.ctaSection.secondaryCta.href} variant="secondary">
                 {cvContent.ctaSection.secondaryCta.label}
               </Button>
+              {cvContent.ctaSection.tertiaryCta ? (
+                <Button
+                  href={cvContent.ctaSection.tertiaryCta.href}
+                  variant="secondary"
+                  newTab
+                >
+                  {cvContent.ctaSection.tertiaryCta.label}
+                </Button>
+              ) : null}
             </div>
           </div>
         </div>

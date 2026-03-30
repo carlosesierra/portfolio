@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 484 369" aria-label="A Web Designer in Melbourne">
+  <g transform="translate(-19 -71)">
+    <circle cx="65" cy="65" r="65" transform="translate(277 71)" fill="#d65b5e" />
+    <circle cx="49" cy="49" r="49" transform="translate(19 110)" fill="#fec943" />
+    <circle cx="40" cy="40" r="40" transform="translate(68 315)" fill="#afd462" />
+    <circle cx="29" cy="29" r="29" transform="translate(186 256)" fill="#aaacaf" />
+    <ellipse cx="76" cy="77" rx="76" ry="77" transform="translate(351 286)" fill="#5d95b1" />
+  </g>
+</svg>

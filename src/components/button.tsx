@@ -6,6 +6,7 @@ type ButtonProps = {
   href: string;
   children: ReactNode;
   className?: string;
+  newTab?: boolean;
   variant?: "primary" | "secondary" | "ghost";
 };
 
@@ -21,26 +22,28 @@ export function Button({
   href,
   children,
   className,
+  newTab = false,
   variant = "primary",
 }: ButtonProps) {
   const isExternal = href.startsWith("http://") || href.startsWith("https://");
   const isMailto = href.startsWith("mailto:");
   const isHashLink = href.startsWith("#") || href.startsWith("/#");
+  const useAnchor = isExternal || isMailto || isHashLink || newTab;
   const classes = cn(
     "inline-flex items-center justify-center px-5 py-3 text-sm font-semibold tracking-[0.01em] no-underline outline-none transition-[transform,background-color,color,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] motion-safe:translate-y-0 motion-safe:transform-gpu will-change-transform focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
     variantClasses[variant],
     className,
   );
 
-  if (isExternal || isMailto || isHashLink) {
+  if (useAnchor) {
     return (
       <a
         href={href}
         className={classes}
         data-button=""
         data-button-variant={variant}
-        rel={isExternal ? "noreferrer" : undefined}
-        target={isExternal ? "_blank" : undefined}
+        rel={isExternal || newTab ? "noreferrer" : undefined}
+        target={isExternal || newTab ? "_blank" : undefined}
       >
         {children}
       </a>

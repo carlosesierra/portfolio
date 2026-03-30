@@ -21,6 +21,7 @@ type CvContent = {
     focusValue: string;
     primaryCta: LinkCta;
     secondaryCta: LinkCta;
+    tertiaryCta?: LinkCta;
   };
   professionalSummary: SectionIntro & {
     paragraphs: readonly string[];
@@ -48,6 +49,7 @@ type CvContent = {
     title: string;
     primaryCta: LinkCta;
     secondaryCta: LinkCta;
+    tertiaryCta?: LinkCta;
   };
 };
 
@@ -69,6 +71,10 @@ export const cvContent = {
     secondaryCta: {
       label: "Back Home",
       href: "/",
+    },
+    tertiaryCta: {
+      label: "CV as PDF",
+      href: "/cv/resume-carlos-sierra%20-%20generic.pdf",
     },
   },
   professionalSummary: {
@@ -287,6 +293,10 @@ export const cvContent = {
     secondaryCta: {
       label: "Return Home",
       href: "/",
+    },
+    tertiaryCta: {
+      label: "CV as PDF",
+      href: "/cv/resume-carlos-sierra%20-%20generic.pdf",
     },
   },
 } as const satisfies CvContent;

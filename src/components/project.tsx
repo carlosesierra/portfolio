@@ -236,7 +236,7 @@ export function ProjectHero({ project }: { project: Project }) {
               {project.heroImage ? (
                 <div className="surface-card overflow-hidden p-2.5">
                   <ParallaxMedia
-                    className="h-[20rem] sm:h-[26rem] lg:h-[31rem]"
+                    className="h-80 sm:h-104 lg:h-124"
                     strength={34}
                   >
                     <Image
