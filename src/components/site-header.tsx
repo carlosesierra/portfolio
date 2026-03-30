@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { siteConfig } from "@/data/site";
 import { Button } from "@/components/button";
 import { Container } from "@/components/container";
+import { brandContent } from "@/content/brand";
 
 export function SiteHeader() {
   return (
@@ -9,15 +9,15 @@ export function SiteHeader() {
       <Container className="flex items-center justify-between gap-6 py-4">
         <Link href="/" className="min-w-0">
           <span className="block text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-muted">
-            Portfolio
+            {brandContent.header.eyebrow}
           </span>
           <span className="block truncate text-base font-semibold tracking-tight text-foreground">
-            {siteConfig.name}
+            {brandContent.name}
           </span>
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm text-muted md:flex">
-          {siteConfig.navigation.map((item) =>
+          {brandContent.navigation.map((item) =>
             item.href.startsWith("/#") ? (
               <a
                 key={item.href}
@@ -38,8 +38,12 @@ export function SiteHeader() {
           )}
         </nav>
 
-        <Button href="/cv" variant="secondary" className="hidden sm:inline-flex">
-          View CV
+        <Button
+          href={brandContent.header.cvCta.href}
+          variant="secondary"
+          className="hidden sm:inline-flex"
+        >
+          {brandContent.header.cvCta.label}
         </Button>
       </Container>
     </header>

@@ -2,9 +2,9 @@ import Link from "next/link";
 import { Button } from "@/components/button";
 import { Tag } from "@/components/tag";
 import { Container } from "@/components/container";
-import { cvData, type CvExperienceItem } from "@/data/cv";
+import { brandContent } from "@/content/brand";
+import { cvContent, type CvExperienceItem } from "@/content/cv";
 import { getProjectBySlug } from "@/data/projects";
-import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
 
 type SectionHeadingProps = {
@@ -137,41 +137,47 @@ export function CvHero() {
         <div className="surface-card-strong rounded-[2.8rem] px-6 py-8 sm:px-8 sm:py-10">
           <div className="grid gap-8 xl:grid-cols-[minmax(0,0.64fr)_minmax(16rem,0.36fr)] xl:items-end">
             <div className="max-w-3xl">
-              <p className="eyebrow">Curriculum vitae</p>
+              <p className="eyebrow">{cvContent.hero.eyebrow}</p>
               <h1 className="mt-4 font-serif text-[3rem] leading-[0.96] tracking-tight text-foreground sm:text-5xl lg:text-[4.2rem]">
-                {siteConfig.name}
+                {brandContent.name}
               </h1>
               <p className="mt-4 text-xl tracking-tight text-foreground/86 sm:text-[1.7rem]">
-                {siteConfig.role}
+                {brandContent.role}
               </p>
               <p className="section-copy mt-6 text-base leading-8 sm:text-lg">
-                {cvData.availability}
+                {cvContent.hero.intro}
               </p>
             </div>
 
             <div className="space-y-4">
-              <div className="rounded-[2rem] border border-border bg-white/66 p-5">
-                <p className="eyebrow">Snapshot</p>
+              <div className="rounded-4xl border border-border bg-white/66 p-5">
+                <p className="eyebrow">{cvContent.hero.snapshotLabel}</p>
                 <dl className="mt-4 space-y-4">
                   <div>
-                    <dt className="text-sm text-muted">Location</dt>
+                    <dt className="text-sm text-muted">
+                      {cvContent.hero.labels.location}
+                    </dt>
                     <dd className="mt-1 text-base text-foreground">
-                      {siteConfig.location}
+                      {brandContent.location}
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-sm text-muted">Focus</dt>
+                    <dt className="text-sm text-muted">
+                      {cvContent.hero.labels.focus}
+                    </dt>
                     <dd className="mt-1 text-base text-foreground">
-                      Frontend engineering, UI systems and delivery quality.
+                      {cvContent.hero.focusValue}
                     </dd>
                   </div>
                 </dl>
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <Button href="/#projects">View Projects</Button>
-                <Button href="/" variant="secondary">
-                  Back Home
+                <Button href={cvContent.hero.primaryCta.href}>
+                  {cvContent.hero.primaryCta.label}
+                </Button>
+                <Button href={cvContent.hero.secondaryCta.href} variant="secondary">
+                  {cvContent.hero.secondaryCta.label}
                 </Button>
               </div>
             </div>
@@ -189,14 +195,14 @@ export function ProfessionalSummarySection() {
         <div className="surface-card-dark rounded-[2.35rem] p-7 sm:p-8">
           <div className="max-w-4xl">
             <SectionHeading
-              eyebrow="Professional summary"
-              title="Frontend engineer focused on clear UI, structured implementation and reliable delivery."
+              eyebrow={cvContent.professionalSummary.eyebrow}
+              title={cvContent.professionalSummary.title}
               invert
               className="max-w-none"
             />
 
             <div className="mt-6 space-y-5 text-base leading-8 text-white/72 sm:text-lg">
-              {cvData.summary.map((paragraph) => (
+              {cvContent.professionalSummary.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
@@ -212,12 +218,12 @@ export function CoreSkillsSection() {
     <section className="section-shell py-12 sm:py-16">
       <Container>
         <SectionHeading
-          eyebrow="Core skills"
-          title="Core skills: How I use them in practice."
+          eyebrow={cvContent.coreSkills.eyebrow}
+          title={cvContent.coreSkills.title}
         />
 
         <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          {cvData.coreSkills.map((group) => (
+          {cvContent.coreSkills.groups.map((group) => (
             <article
               key={group.title}
               className="surface-card rounded-[2.2rem] p-6 sm:p-7"
@@ -239,14 +245,14 @@ export function HighlightsSection() {
         <div className="surface-card-dark rounded-[2.7rem] px-6 py-8 sm:px-8 sm:py-10">
           <div className="grid gap-8 xl:grid-cols-[minmax(0,0.34fr)_minmax(0,0.66fr)] xl:items-start">
             <SectionHeading
-              eyebrow="Highlights"
-              title="Strengths that show up consistently in my work."
-              copy="These themes reflect how I tend to approach frontend implementation across both product-style websites and campaign-driven environments."
+              eyebrow={cvContent.highlightsSection.eyebrow}
+              title={cvContent.highlightsSection.title}
+              copy={cvContent.highlightsSection.copy}
               invert
             />
 
             <div className="grid gap-4 md:grid-cols-3">
-              {cvData.highlights.map((item) => (
+              {cvContent.highlightsSection.items.map((item) => (
                 <article
                   key={item.title}
                   className="rounded-[1.9rem] border border-white/10 bg-white/6 p-6"
@@ -272,13 +278,13 @@ export function ExperienceSection() {
     <section className="section-shell py-12 sm:py-16">
       <Container>
         <SectionHeading
-          eyebrow="Experience"
-          title="Selected experience."
-          copy="Experience across frontend engineering, digital production and campaign delivery spanning websites, eDM systems, HTML5 banners and modern responsive UI implementation."
+          eyebrow={cvContent.experienceSection.eyebrow}
+          title={cvContent.experienceSection.title}
+          copy={cvContent.experienceSection.copy}
         />
 
         <div className="mt-10 space-y-5">
-          {cvData.experience.map((item) => (
+          {cvContent.experienceSection.items.map((item) => (
             <ExperienceItem key={`${item.eyebrow}-${item.role}`} item={item} />
           ))}
         </div>
@@ -288,7 +294,7 @@ export function ExperienceSection() {
 }
 
 export function KeyProjectsSection() {
-  const projects = cvData.keyProjectSlugs.flatMap((slug) => {
+  const projects = cvContent.projectReferencesSection.slugs.flatMap((slug) => {
     const project = getProjectBySlug(slug);
     return project ? [project] : [];
   });
@@ -297,9 +303,9 @@ export function KeyProjectsSection() {
     <section className="section-shell py-12 sm:py-16">
       <Container>
         <SectionHeading
-          eyebrow="Project references"
-          title="Selected project references"
-          copy="A few projects that reflect my frontend implementation style, delivery thinking and approach to maintainable UI work."
+          eyebrow={cvContent.projectReferencesSection.eyebrow}
+          title={cvContent.projectReferencesSection.title}
+          copy={cvContent.projectReferencesSection.copy}
         />
 
         <div className="mt-10 grid gap-5 lg:grid-cols-3">
@@ -333,16 +339,16 @@ export function EducationCertsSection() {
       <Container>
         <div className="grid gap-10 xl:grid-cols-[minmax(0,0.38fr)_minmax(0,0.62fr)] xl:items-start">
           <SectionHeading
-            eyebrow="Education and specialisation"
-            title="Ongoing learning and technical development."
-            copy="Alongside project work, I continue refining my frontend practice through structured learning, design-to-code execution and deeper work with modern UI systems."
+            eyebrow={cvContent.educationSection.eyebrow}
+            title={cvContent.educationSection.title}
+            copy={cvContent.educationSection.copy}
           />
 
           <div className="grid gap-4 md:grid-cols-2">
-            {cvData.education.map((item) => (
+            {cvContent.educationSection.items.map((item) => (
               <article
                 key={item.title}
-                className="surface-card rounded-[2rem] p-6"
+                className="surface-card rounded-4xl p-6"
               >
                 <h3 className="text-xl font-semibold tracking-tight text-foreground">
                   {item.title}
@@ -364,13 +370,13 @@ export function ToolsSection() {
     <section className="section-shell py-12 sm:py-16">
       <Container>
         <SectionHeading
-          eyebrow="Tooling"
-          title="Tools and technologies."
-          copy="The tools below reflect the environments I've worked in most often across frontend build, interface implementation and digital delivery."
+          eyebrow={cvContent.toolsSection.eyebrow}
+          title={cvContent.toolsSection.title}
+          copy={cvContent.toolsSection.copy}
         />
 
         <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          {cvData.tools.map((group) => (
+          {cvContent.toolsSection.groups.map((group) => (
             <article
               key={group.title}
               className="surface-card rounded-[2.15rem] p-6 sm:p-7"
@@ -392,15 +398,17 @@ export function CvCtaSection() {
         <div className="surface-card-strong rounded-[2.8rem] px-6 py-8 sm:px-8 sm:py-10">
           <div className="grid gap-8 xl:grid-cols-[minmax(0,0.62fr)_minmax(16rem,0.38fr)] xl:items-end">
             <SectionHeading
-              eyebrow="Continue exploring"
-              title="Explore the case studies for a closer look at implementation decisions, delivery thinking and frontend execution."
+              eyebrow={cvContent.ctaSection.eyebrow}
+              title={cvContent.ctaSection.title}
               className="max-w-none"
             />
 
             <div className="flex flex-wrap gap-3">
-              <Button href="/#projects">Open Case Studies</Button>
-              <Button href="/" variant="secondary">
-                Return Home
+              <Button href={cvContent.ctaSection.primaryCta.href}>
+                {cvContent.ctaSection.primaryCta.label}
+              </Button>
+              <Button href={cvContent.ctaSection.secondaryCta.href} variant="secondary">
+                {cvContent.ctaSection.secondaryCta.label}
               </Button>
             </div>
           </div>
