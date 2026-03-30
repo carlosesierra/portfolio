@@ -325,10 +325,7 @@ export function TechStackSection() {
               className="surface-card rounded-[2.15rem] p-6 sm:p-7"
             >
               <p className="eyebrow">{group.title}</p>
-              <p className="mt-4 text-lg leading-8 text-foreground">
-                {group.body}
-              </p>
-              <Tags items={group.items} className="mt-6" />
+              <Tags items={group.items} className="mt-5" />
             </article>
           ))}
         </div>

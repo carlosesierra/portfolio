@@ -146,7 +146,7 @@ export const cvContent = {
     eyebrow: "Experience",
     title: "Selected experience.",
     copy:
-      "Experience across frontend engineering, digital production and campaign delivery spanning websites, eDM systems, HTML5 banners and modern responsive UI implementation.",
+      "Frontend and digital production experience across websites, eDM systems, HTML5 banners and responsive UI delivery.",
     items: [
       {
         eyebrow: "Current practice",
@@ -216,7 +216,7 @@ export const cvContent = {
     eyebrow: "Project references",
     title: "Selected project references",
     copy:
-      "A few projects that reflect my frontend implementation style, delivery thinking and approach to maintainable UI work.",
+      "A few projects that reflect how I approach frontend implementation, delivery and long-term usability.",
     slugs: ["structural-assessments", "any-motion", "vaa"],
   },
   educationSection: {

@@ -124,7 +124,7 @@ export const homeContent = {
     eyebrow: "Experience snapshot",
     title: "The experience behind the work.",
     copy:
-      "My background includes frontend engineering, campaign production, reusable UI delivery and practical implementation across different digital formats.",
+      "Experience across freelance, studio and production environments spanning websites, eDMs and campaign-driven frontend work.",
     items: [
       {
         eyebrow: "2015 - Present",
@@ -166,8 +166,6 @@ export const homeContent = {
     groups: [
       {
         title: "Frontend",
-        body:
-          "Production-ready UI implementation with React, Next.js, TypeScript and responsive layout discipline.",
         items: [
           "React",
           "Next.js",
@@ -179,8 +177,6 @@ export const homeContent = {
       },
       {
         title: "UI Systems",
-        body:
-          "Reusable patterns, component thinking and structured interface decisions that scale past a single page build.",
         items: [
           "Component architecture",
           "Design systems",
@@ -191,8 +187,6 @@ export const homeContent = {
       },
       {
         title: "Delivery",
-        body:
-          "Release-minded workflow across version control, CMS handoff, QA and practical production support.",
         items: [
           "Vercel",
           "Git / GitHub",
@@ -221,7 +215,7 @@ export const homeContent = {
       title: "A short introduction to how I approach frontend engineering.",
       paragraphs: [
         "I'm a Melbourne-based Front-End Engineer with a background across websites, digital production and marketing-tech delivery. Over time, I've developed a strong interest in the systems behind good interface work - how components are structured, how content is presented clearly and how delivery stays reliable under real production constraints.",
-        "The common thread in my work is frontend execution that feels polished, maintainable and grounded in practical delivery. I'm now focused on roles where thoughtful UI implementation, structured engineering and product-facing collaboration come together.",
+        "I’m now focused on frontend roles where thoughtful UI implementation, modern engineering workflows and product-facing collaboration come together.",
       ],
     },
     currentFocus: {
@@ -238,7 +232,7 @@ export const homeContent = {
     eyebrow: "Next step",
     title: "Open to frontend roles where thoughtful UI and structured delivery matter.",
     body:
-      "This portfolio highlights the kind of work I want to keep building: accessible interfaces, maintainable frontend systems and polished digital experiences delivered with care.",
+      "I'm looking for frontend roles where clear UI, strong implementation and dependable delivery all matter.",
     primaryCta: {
       label: "View CV",
       href: "/cv",
