@@ -10,6 +10,7 @@ import {
   ProfessionalSummarySection,
   ToolsSection,
 } from "@/components/cv";
+import { getCvJsonLd, serializeJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "CV",
@@ -34,8 +35,14 @@ export const metadata: Metadata = {
 };
 
 export default function CvPage() {
+  const jsonLd = serializeJsonLd(getCvJsonLd());
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd }}
+      />
       <CvHero />
       <ProfessionalSummarySection />
       <CoreSkillsSection />
