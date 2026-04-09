@@ -6,8 +6,8 @@ import { brandContent } from "@/content/brand";
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/80 bg-background/75 backdrop-blur-xl">
-      <Container className="flex items-center justify-between gap-6 py-4">
-        <Link href="/" className="min-w-0">
+      <Container className="flex items-center justify-between gap-3 py-4 sm:gap-6">
+        <Link href="/" className="min-w-0 flex-1">
           <span className="block text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-muted">
             {brandContent.header.eyebrow}
           </span>
@@ -48,13 +48,22 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <Button
-          href={brandContent.header.cvCta.href}
-          variant="secondary"
-          className="hidden sm:inline-flex"
-        >
-          {brandContent.header.cvCta.label}
-        </Button>
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <Button
+            href={brandContent.header.cvCta.href}
+            variant="secondary"
+            className="whitespace-nowrap px-3 py-2 text-[0.76rem] sm:px-5 sm:py-3 sm:text-sm"
+          >
+            {brandContent.header.cvCta.label}
+          </Button>
+          <Button
+            href={brandContent.header.extendedCta.href}
+            variant="secondary"
+            className="whitespace-nowrap px-3 py-2 text-[0.76rem] sm:px-5 sm:py-3 sm:text-sm"
+          >
+            {brandContent.header.extendedCta.label}
+          </Button>
+        </div>
       </Container>
     </header>
   );

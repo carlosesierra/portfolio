@@ -7,6 +7,7 @@ type BrandContent = {
   header: {
     eyebrow: string;
     cvCta: LinkCta;
+    extendedCta: LinkCta;
   };
   navigation: readonly NavigationItem[];
   footerBlurb: string;
@@ -21,6 +22,10 @@ export const brandContent = {
     cvCta: {
       label: "View CV",
       href: "/cv",
+    },
+    extendedCta: {
+      label: "Extended Version",
+      href: "https://portfolio.carlosesierra.com.au/",
     },
   },
   navigation: [

@@ -48,6 +48,7 @@ type HomeContent = {
     body: string;
     primaryCta: LinkCta;
     secondaryCta: LinkCta;
+    tertiaryCta?: LinkCta;
   };
 };
 
@@ -207,6 +208,10 @@ export const homeContent = {
     secondaryCta: {
       label: "Browse Projects",
       href: "/#projects",
+    },
+    tertiaryCta: {
+      label: "Extended Version",
+      href: "https://portfolio.carlosesierra.com.au/",
     },
   },
 } as const satisfies HomeContent;

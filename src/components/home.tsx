@@ -395,6 +395,11 @@ export function ContactCtaSection() {
                 <Button href={homeContent.contact.secondaryCta.href} variant="secondary">
                   {homeContent.contact.secondaryCta.label}
                 </Button>
+                {homeContent.contact.tertiaryCta ? (
+                  <Button href={homeContent.contact.tertiaryCta.href} variant="secondary">
+                    {homeContent.contact.tertiaryCta.label}
+                  </Button>
+                ) : null}
               </div>
             </div>
           </div>
